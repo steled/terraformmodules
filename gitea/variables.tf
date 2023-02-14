@@ -3,10 +3,6 @@ variable "kubernetes_namespace_name" {
   description = "Name of the kubernetes namespace"
 }
 
-variable "helm_release_name" {
-  type = string
-}
-
 variable "gitea_domain" {
   type = string
 }
