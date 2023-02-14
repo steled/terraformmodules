@@ -5,7 +5,7 @@ variable "kubernetes_namespace_name" {
 
 variable "ingress_version" {
   type = string
-  description = "Set the version of cert-manager"
+  description = "Set the version of ingress"
 }
 
 variable "values_yaml" {
