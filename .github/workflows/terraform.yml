@@ -30,6 +30,9 @@ jobs:
       continue-on-error: true
 
     - uses: EndBug/add-and-commit@v9
+      with:
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        ref: ${{ github.event.pull_request.head.ref }}
 
 #    - name: Terraform Init
 #      id: init
