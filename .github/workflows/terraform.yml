@@ -33,6 +33,5 @@ jobs:
 #      id: init
 #      run: terraform init
 
-    - run: echo ${{ steps.fmt.outputs.stdout }}
     - run: echo ${{ steps.fmt.outputs.stderr }}
     - run: echo ${{ steps.fmt.outputs.exitcode }}
