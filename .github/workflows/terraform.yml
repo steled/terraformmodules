@@ -33,5 +33,8 @@ jobs:
 #      id: init
 #      run: terraform init
 
-    - run: echo ${{ steps.fmt.outputs.stderr }}
-    - run: echo ${{ steps.fmt.outputs.exitcode }}
+    - uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
