@@ -26,8 +26,10 @@ jobs:
 
     - name: Terraform Format
       id: fmt
-      run: terraform fmt -check -recursive
+      run: terraform fmt -recursive
       continue-on-error: true
+
+    - uses: EndBug/add-and-commit@v9
 
 #    - name: Terraform Init
 #      id: init
