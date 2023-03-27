@@ -20,6 +20,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: ${{ github.event.pull_request.head.ref }}
+        path: './terraformmodules/'
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
@@ -40,6 +41,7 @@ jobs:
         message: Show GitHub Actions logo
         committer_name: GitHub Actions
         committer_email: actions@github.com
+        cwd:  './terraformmodules/'
     
 #    - uses: actions/github-script@v6
 #      if: github.event_name == 'pull_request'
