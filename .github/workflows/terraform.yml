@@ -40,7 +40,7 @@ jobs:
         message: Show GitHub Actions logo
         committer_name: GitHub Actions
         committer_email: actions@github.com
-        add: '*.tf'
+        add: '.'
     
 #    - uses: actions/github-script@v6
 #      if: github.event_name == 'pull_request'
