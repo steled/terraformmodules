@@ -11,6 +11,6 @@ variable "helm_values_addresses" {
 }
 
 variable "values_yaml" {
-  type = string
+  type        = string
   description = "Path to the values.yml file, relative to the root module"
 }

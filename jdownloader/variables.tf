@@ -1,5 +1,5 @@
 variable "kubernetes_namespace_name" {
-  type = string
+  type        = string
   description = "Name of the kubernetes namespace"
 }
 
@@ -44,6 +44,6 @@ variable "logs_pvc_name" {
 }
 
 variable "sftp_values_yaml" {
-  type = string
+  type        = string
   description = "Path to the values.yml file, relative to the root module"
 }
