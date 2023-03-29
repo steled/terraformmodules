@@ -35,27 +35,27 @@ resource "kubernetes_deployment" "dht22" {
         container {
           image = var.image
           name  = "dht22"
-          args  = [ "-g", "D2", "-i", "5" ]
+          args  = ["-g", "D2", "-i", "5"]
           port {
-            name = "metrics"
+            name           = "metrics"
             container_port = 9100
           }
-#          security_context {
-#            capabilities {
-#              add = [ "SYS_RAWIO" ]
-#            }
-#          }
+          #          security_context {
+          #            capabilities {
+          #              add = [ "SYS_RAWIO" ]
+          #            }
+          #          }
 
           resources {
             limits = {
               "smarter-devices/gpiomem" = "1"
-              cpu    = "0.5"
-              memory = "512Mi"
+              cpu                       = "0.5"
+              memory                    = "512Mi"
             }
             requests = {
               "smarter-devices/gpiomem" = "1"
-              cpu    = "250m"
-              memory = "50Mi"
+              cpu                       = "250m"
+              memory                    = "50Mi"
             }
           }
         }
