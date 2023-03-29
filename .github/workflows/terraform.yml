@@ -32,7 +32,7 @@ jobs:
 
     - name: Terraform Init
       id: init
-      run: for dir in $(find */ -type d -exec test -e "{}"/main.tf \; -print); do echo $dir && terraform -chdir=$dir init >/dev/null && echo -e "\033[0;32mTerraform has been successfully initialized!\033[0m\n"; done
+      run: for dir in $(find */ -type d -exec test -e "{}"/main.tf \; -print); do echo $dir && terraform -chdir=$dir init >/dev/null && echo -e "\033[0;32mTerraform has been successfully initialized! \033[0m\n"; done
 
     - name: Terraform validate
       id: validate
