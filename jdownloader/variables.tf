@@ -3,10 +3,6 @@ variable "kubernetes_namespace_name" {
   description = "Name of the kubernetes namespace"
 }
 
-variable "sftp_helm_release_name" {
-  type = string
-}
-
 variable "env_JD_DEVICENAME" {
   type = string
 }

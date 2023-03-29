@@ -14,14 +14,14 @@ resource "helm_release" "gitea" {
 #  recreate_pods = true
 
   values = [ templatefile(var.values_yaml, {
-    gitea_domain = var.gitea_domain,
-    environment = var.environment,
-    gitea_admin_username = var.gitea_admin_username,
-    gitea_admin_password = var.gitea_admin_password,
-    gitea_admin_email = var.gitea_admin_email,
-    gitea_oauth2_jwt_secret = var.gitea_oauth2_jwt_secret,
-    gitea_security_internal_token = var.gitea_security_internal_token,
-    gitea_security_secret_key = var.gitea_security_secret_key,
+    gitea_domain = var.gitea_domain
+    environment = var.environment
+    gitea_admin_username = var.gitea_admin_username
+    gitea_admin_password = var.gitea_admin_password
+    gitea_admin_email = var.gitea_admin_email
+    gitea_oauth2_jwt_secret = var.gitea_oauth2_jwt_secret
+    gitea_security_internal_token = var.gitea_security_internal_token
+    gitea_security_secret_key = var.gitea_security_secret_key
     gitea_server_lfs_jwt_secret = var.gitea_server_lfs_jwt_secret
   }) ]
 

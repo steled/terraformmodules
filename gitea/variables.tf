@@ -3,8 +3,9 @@ variable "kubernetes_namespace_name" {
   description = "Name of the kubernetes namespace"
 }
 
-variable "helm_release_name" {
+variable "gitea_version" {
   type = string
+  description = "Set the version of gitea"
 }
 
 variable "gitea_domain" {

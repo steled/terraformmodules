@@ -4,6 +4,7 @@ variable "kubernetes_namespace_name" {
 
 variable "metallb_version" {
   type = string
+  description = "Set the version of metallb"
 }
 
 variable "helm_values_addresses" {
