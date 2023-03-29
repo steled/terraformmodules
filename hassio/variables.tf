@@ -1,5 +1,5 @@
 variable "kubernetes_namespace_name" {
-  type = string
+  type        = string
   description = "Name of the kubernetes namespace"
 }
 
