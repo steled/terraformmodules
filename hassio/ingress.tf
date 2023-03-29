@@ -1,11 +1,11 @@
 resource "kubernetes_ingress_v1" "hassio" {
   metadata {
-    name        = var.metadata_name
-    namespace   = kubernetes_namespace.hassio.metadata[0].name
+    name      = var.metadata_name
+    namespace = kubernetes_namespace.hassio.metadata[0].name
     annotations = {
-      "kubernetes.io/ingress.class" = "nginx"
+      "kubernetes.io/ingress.class"    = "nginx"
       "cert-manager.io/cluster-issuer" = "duckdns-webhook-cert-manager-webhook-duckdns-production"
-      "nginx.org/server-snippets" = <<EOF
+      "nginx.org/server-snippets"      = <<EOF
         location / {
           proxy_set_header Host $host;
           proxy_redirect http:// https://;
@@ -37,7 +37,7 @@ resource "kubernetes_ingress_v1" "hassio" {
     }
 
     tls {
-      hosts = [var.host]
+      hosts       = [var.host]
       secret_name = "hassio-secret"
     }
   }

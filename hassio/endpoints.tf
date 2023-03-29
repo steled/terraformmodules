@@ -1,6 +1,6 @@
 resource "kubernetes_endpoints" "hassio" {
   metadata {
-    name = var.metadata_name
+    name      = var.metadata_name
     namespace = kubernetes_namespace.hassio.metadata[0].name
   }
 
