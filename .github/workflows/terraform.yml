@@ -34,6 +34,7 @@ jobs:
       run: for dir in $(find */ -type d -exec test -e "{}"/main.tf \; -print); do echo $dir && terraform -chdir=$dir validate; done
 
   format:
+    needs: validate
     name: 'terraform format'
     runs-on: ubuntu-latest
 
