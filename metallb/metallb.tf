@@ -1,20 +1,19 @@
 resource "kubernetes_namespace" "metallb" {
   metadata {
-    name = var.kubernetes_namespace_name
+    name = var.namespace
   }
 }
 
 resource "helm_release" "metallb" {
   name          = "metallb"
+  namespace     = kubernetes_namespace.metallb.metadata[0].name
 
   repository    = "https://charts.bitnami.com/bitnami"
   chart         = "metallb"
-  version       = var.metallb_version # check version here: https://github.com/bitnami/charts/blob/master/bitnami/metallb/Chart.yaml
+  version       = var.version # check version here: https://github.com/bitnami/charts/blob/master/bitnami/metallb/Chart.yaml
   recreate_pods = true
 
-  values = [ var.values_yaml ]
+  values = [ file(var.values_yaml) ]
 
-  namespace     = kubernetes_namespace.metallb.metadata[0].name
-
-  depends_on    = [ kubernetes_namespace.metallb, ]
+  # depends_on    = [ kubernetes_namespace.metallb, ]
 }

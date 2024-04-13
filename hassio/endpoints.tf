@@ -1,6 +1,6 @@
 resource "kubernetes_endpoints" "hassio" {
   metadata {
-    name = var.metadata_name
+    name = "hassio"
     namespace = kubernetes_namespace.hassio.metadata[0].name
   }
 
@@ -10,7 +10,7 @@ resource "kubernetes_endpoints" "hassio" {
     }
 
     port {
-      name     = var.port_name
+      name     = "hassio"
       port     = 8123
       protocol = "TCP"
     }

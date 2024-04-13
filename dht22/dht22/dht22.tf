@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "dht22" {
   metadata {
     name      = "dht22"
-    namespace = var.kubernetes_namespace_name
+    namespace = var.namespace
     labels = {
       app = "dht22"
     }

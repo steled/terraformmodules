@@ -1,11 +1,12 @@
 resource "kubernetes_namespace" "certmanager" {
   metadata {
-    name = var.kubernetes_namespace_name
+    name = var.namespace
   }
 }
 
 resource "helm_release" "certmanager" {
   name       = "cert-manager"
+  namespace  = kubernetes_namespace.certmanager.metadata[0].name
 
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
@@ -15,6 +16,4 @@ resource "helm_release" "certmanager" {
     name = "installCRDs"
     value = "true"
   }
-
-  namespace = kubernetes_namespace.certmanager.metadata[0].name
 }

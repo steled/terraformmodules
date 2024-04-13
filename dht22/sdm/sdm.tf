@@ -1,7 +1,7 @@
 resource "kubernetes_config_map" "sdm" {
   metadata {
     name = "smarter-device-manager"
-    namespace = var.kubernetes_namespace_name
+    namespace = var.namespace
   }
 
   data = {
@@ -15,7 +15,7 @@ CONF
 resource "kubernetes_deployment" "sdm" {
   metadata {
     name      = "smarter-device-manager"
-    namespace = var.kubernetes_namespace_name
+    namespace = var.namespace
     labels = {
       app = "sdm"
     }

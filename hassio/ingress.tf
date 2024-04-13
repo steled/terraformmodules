@@ -1,6 +1,6 @@
 resource "kubernetes_ingress_v1" "hassio" {
   metadata {
-    name        = var.metadata_name
+    name        = "hassio"
     namespace   = kubernetes_namespace.hassio.metadata[0].name
     annotations = {
       "kubernetes.io/ingress.class" = "nginx"
@@ -24,7 +24,7 @@ resource "kubernetes_ingress_v1" "hassio" {
         path {
           backend {
             service {
-              name = var.metadata_name
+              name = "hassio"
               port {
                 number = 443
               }
