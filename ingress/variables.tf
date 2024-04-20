@@ -3,7 +3,7 @@ variable "namespace" {
   description = "Name of the kubernetes namespace"
 }
 
-variable "version" {
+variable "ingress_version" {
   type = string
   description = "Set the version of ingress"
 }

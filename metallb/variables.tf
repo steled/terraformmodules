@@ -2,7 +2,7 @@ variable "namespace" {
   type = string
 }
 
-variable "version" {
+variable "metallb_version" {
   type = string
   description = "Set the version of metallb"
 }
