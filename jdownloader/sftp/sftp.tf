@@ -1,9 +1,8 @@
 resource "helm_release" "sftp" {
-  name       = "sftp"
+  name      = "sftp"
+  namespace = var.namespace
 
-  chart      = "https://github.com/steled/sftp-server/archive/refs/tags/v0.3.5.tar.gz"
+  chart = "https://github.com/steled/sftp-server/archive/refs/tags/v0.3.5.tar.gz"
 
-  values = [ var.values_yaml ]
-
-  namespace = var.kubernetes_namespace_name
+  values = [ file(var.values_yaml) ]
 }

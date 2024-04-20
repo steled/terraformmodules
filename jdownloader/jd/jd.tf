@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "jdownloader" {
   metadata {
     name = "jd"
-    namespace = var.kubernetes_namespace_name
+    namespace = var.namespace
 
     labels = {
       app = "jd-sftp"
@@ -74,21 +74,21 @@ resource "kubernetes_deployment" "jdownloader" {
         volume {
           name = "config"
           persistent_volume_claim {
-            claim_name = var.config_pvc_name
+            claim_name = "jd-sftp-config-pvc"
           }
         }
 
         volume {
           name = "downloads"
           persistent_volume_claim {
-            claim_name = var.downloads_pvc_name
+            claim_name = "jd-sftp-downloads-pvc"
           }
         }
 
         volume {
           name = "logs"
           persistent_volume_claim {
-            claim_name = var.logs_pvc_name
+            claim_name = "jd-sftp-logs-pvc"
           }
         }
       }

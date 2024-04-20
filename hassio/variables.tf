@@ -1,14 +1,6 @@
-variable "kubernetes_namespace_name" {
+variable "namespace" {
   type = string
   description = "Name of the kubernetes namespace"
-}
-
-variable "metadata_name" {
-  type = string
-}
-
-variable "port_name" {
-  type = string
 }
 
 variable "host" {

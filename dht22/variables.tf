@@ -1,4 +1,4 @@
-variable "kubernetes_namespace_name" {
+variable "namespace" {
   type = string
   description = "Name of the kubernetes namespace"
 }

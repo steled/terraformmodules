@@ -1,6 +1,6 @@
 resource "kubernetes_persistent_volume" "jd-sftp-config-pv" {
   metadata {
-    name = var.config_pv_name
+    name = "jd-sftp-config-pv"
 #    annotations = {
 #      "pv.beta.kubernetes.io/gid" = "3000"
 #    }
@@ -27,8 +27,8 @@ resource "kubernetes_persistent_volume" "jd-sftp-config-pv" {
 
 resource "kubernetes_persistent_volume_claim" "jd-sftp-config-pvc" {
   metadata {
-    name = var.config_pvc_name
-    namespace = var.kubernetes_namespace_name
+    name = "jd-sftp-config-pvc"
+    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
@@ -46,7 +46,7 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-config-pvc" {
 
 resource "kubernetes_persistent_volume" "jd-sftp-downloads-pv" {
   metadata {
-    name = var.downloads_pv_name
+    name = "jd-sftp-downloads-pv"
 #    annotations = {
 #      "pv.beta.kubernetes.io/gid" = "3000"
 #    }
@@ -73,8 +73,8 @@ resource "kubernetes_persistent_volume" "jd-sftp-downloads-pv" {
 
 resource "kubernetes_persistent_volume_claim" "jd-sftp-downloads-pvc" {
   metadata {
-    name = var.downloads_pvc_name
-    namespace = var.kubernetes_namespace_name
+    name = "jd-sftp-downloads-pvc"
+    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
@@ -92,7 +92,7 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-downloads-pvc" {
 
 resource "kubernetes_persistent_volume" "jd-sftp-logs-pv" {
   metadata {
-    name = var.logs_pv_name
+    name = "jd-sftp-logs-pv"
 #    annotations = {
 #      "pv.beta.kubernetes.io/gid" = "3000"
 #    }
@@ -119,8 +119,8 @@ resource "kubernetes_persistent_volume" "jd-sftp-logs-pv" {
 
 resource "kubernetes_persistent_volume_claim" "jd-sftp-logs-pvc" {
   metadata {
-    name = var.logs_pvc_name
-    namespace = var.kubernetes_namespace_name
+    name = "jd-sftp-logs-pvc"
+    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
