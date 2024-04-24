@@ -17,7 +17,8 @@ resource "kubernetes_persistent_volume" "jd-sftp-config-pv" {
     access_modes = ["ReadWriteOnce"]
     persistent_volume_source {
       host_path {
-        path = "/ext/persistent/jdownloader/config"
+        # path = "/ext/persistent/jdownloader/config"
+        path = "/mnt/test/jdownloader/config"
       }
     }
   }
@@ -63,7 +64,8 @@ resource "kubernetes_persistent_volume" "jd-sftp-downloads-pv" {
     access_modes = ["ReadWriteMany"]
     persistent_volume_source {
       host_path {
-        path = "/ext/persistent/jdownloader/downloads"
+        # path = "/ext/persistent/jdownloader/downloads"
+        path = "/mnt/test/jdownloader/downloads"
       }
     }
   }
@@ -109,7 +111,8 @@ resource "kubernetes_persistent_volume" "jd-sftp-logs-pv" {
     access_modes = ["ReadWriteOnce"]
     persistent_volume_source {
       host_path {
-        path = "/ext/persistent/jdownloader/logs"
+        # path = "/ext/persistent/jdownloader/logs"
+        path = "/mnt/test/jdownloader/logs"
       }
     }
   }
