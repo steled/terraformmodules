@@ -6,7 +6,8 @@ metadata:
   name: generic-cluster-pool
   namespace: ${kubernetes_namespace.metallb.metadata[0].name}
 spec:
-  addresses: ${[ var.helm_values_addresses ]}
+  addresses:
+    ${ var.helm_values_addresses}
 YAML
 }
 
