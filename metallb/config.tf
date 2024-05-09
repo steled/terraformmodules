@@ -1,5 +1,5 @@
-resource "kubernetes_manifest" "metallb_ipaddresspool" {
-  manifest = {
+resource "kubectl_manifest" "metallb_ipaddresspool" {
+  yaml_body = <<YAML
     apiVersion = "metallb.io/v1beta1"
     kind = "IPAddressPool"
     metadata = {
@@ -9,16 +9,16 @@ resource "kubernetes_manifest" "metallb_ipaddresspool" {
     spec = {
       addresses = [ var.helm_values_addresses ]
     }
-  }
+  YAML
 }
 
-resource "kubernetes_manifest" "metallb_l2advertisement" {
-  manifest = {
+resource "kubectl_manifest" "metallb_l2advertisement" {
+  yaml_body = <<YAML
     apiVersion = "metallb.io/v1beta1"
     kind = "L2Advertisement"
     metadata = {
       name = "generic-cluster-pool"
       namespace = kubernetes_namespace.metallb.metadata[0].name
     }
-  }
+  YAML
 }
