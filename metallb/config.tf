@@ -9,6 +9,8 @@ spec:
   addresses:
     ${ var.helm_values_addresses}
 YAML
+
+  depends_on = [ helm_release.metallb ]
 }
 
 resource "kubectl_manifest" "metallb_l2advertisement" {
@@ -19,4 +21,6 @@ metadata:
   name: generic-cluster-pool
   namespace: ${kubernetes_namespace.metallb.metadata[0].name}
 YAML
+
+  depends_on = [ helm_release.metallb ]
 }
