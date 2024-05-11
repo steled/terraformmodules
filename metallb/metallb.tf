@@ -8,9 +8,9 @@ resource "helm_release" "metallb" {
   name          = "metallb"
   namespace     = kubernetes_namespace.metallb.metadata[0].name
 
-  repository    = "oci://registry-1.docker.io/bitnamicharts/metallb"
+  repository    = "https://metallb.github.io/metallb"
   chart         = "metallb"
-  version       = var.metallb_version # check version here: https://github.com/bitnami/charts/blob/main/bitnami/metallb/Chart.yaml#L38
+  version       = var.metallb_version # check version here: https://github.com/metallb/metallb/blob/v0.14.5/charts/metallb/Chart.yaml#L44
   recreate_pods = true
 
   values = [ file(var.values_yaml) ]
