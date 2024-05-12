@@ -15,5 +15,15 @@ resource "helm_release" "metallb" {
 
   values = [ file(var.values_yaml) ]
 
+  set {
+    name = "controller.image.tag"
+    value = var.metallb_version
+  }
+
+  set {
+    name = "speaker.image.tag"
+    value = var.metallb_version
+  }
+
   # depends_on    = [ kubernetes_namespace.metallb, ]
 }
