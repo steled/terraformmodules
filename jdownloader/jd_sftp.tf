@@ -2,6 +2,23 @@ resource "kubernetes_namespace" "jd-sftp" {
   metadata {
     name = var.namespace
   }
+
+  connection {
+    type     = "ssh"
+    user     = var.ssh_user
+    host     = var.ssh_host
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mkdir --mode 0755 -p /ext/persistent/jdownloader/config",
+      "sudo chown 1000:1000 -R /ext/persistent/jdownloader/config/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/jdownloader/downloads",
+      "sudo chown 1000:1000 -R /ext/persistent/jdownloader/downloads/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/jdownloader/logs",
+      "sudo chown 1000:1000 -R /ext/persistent/jdownloader/logs/",
+    ]
+  }
 }
 
 module "jd" {
