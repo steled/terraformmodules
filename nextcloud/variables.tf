@@ -1,3 +1,13 @@
+variable "ssh_user" {
+  type = string
+  description = "Username for SSH connection"
+}
+
+variable "ssh_host" {
+  type = string
+  description = "Host for SSH connection"
+}
+
 variable "kubernetes_namespace_name" {
   type = string
 }
