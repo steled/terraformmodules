@@ -1,4 +1,4 @@
-resource "kubernetes_secret" "nextcloud-secret" {
+resource "kubernetes_secret" "nextcloud_secret" {
   metadata {
     name      = "nextcloud-secret"
     namespace = var.kubernetes_namespace_name

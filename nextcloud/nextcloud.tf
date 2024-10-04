@@ -50,9 +50,9 @@ resource "helm_release" "nextcloud" {
   timeout = 360
 
   depends_on = [
-    kubernetes_persistent_volume_claim.nextcloud-server-pvc,
-    kubernetes_persistent_volume_claim.nextcloud-postgresql-pvc,
-    kubernetes_persistent_volume_claim.nextcloud-backup-pvc,
-    kubernetes_secret.nextcloud-secret
+    kubernetes_persistent_volume_claim.nextcloud_server_pvc,
+    kubernetes_persistent_volume_claim.nextcloud_postgresql_pvc,
+    kubernetes_persistent_volume_claim.nextcloud_backup_pvc,
+    kubernetes_secret.nextcloud_secret
   ]
 }
