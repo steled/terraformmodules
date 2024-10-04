@@ -2,6 +2,23 @@ resource "kubernetes_namespace" "nextcloud_staging" {
   metadata {
     name = var.kubernetes_namespace_name
   }
+
+  connection {
+    type     = "ssh"
+    user     = var.ssh_user
+    host     = var.ssh_host
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud-staging/server",
+      "sudo chown 1000:1000 -R /ext/persistent/nextcloud-staging/server/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud-staging/postgresql",
+      "sudo chown 1001:1001 -R /ext/persistent/nextcloud-staging/postgresql/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud-staging/backup",
+      "sudo chown 1001:1001 -R /ext/persistent/nextcloud-staging/backup/",
+    ]
+  }
 }
 
 resource "helm_release" "nextcloud_staging" {
@@ -12,7 +29,7 @@ resource "helm_release" "nextcloud_staging" {
   version       = var.nextcloud_staging_version # take care of update path; check version here: https://github.com/nextcloud/helm/blob/master/charts/nextcloud/Chart.yaml
   recreate_pods = true
 
-  values = [ templatefile("values.yaml", {
+  values = [ templatefile("${path.module}/values.yaml", {
     nextcloud_domain = var.nextcloud_staging_domain,
     environment = var.environment,
     ip_address = var.ip_address,
@@ -30,10 +47,12 @@ resource "helm_release" "nextcloud_staging" {
 
   namespace = kubernetes_namespace.nextcloud_staging.metadata[0].name
 
+ timeout = 360
+
   depends_on = [
-    kubernetes_persistent_volume_claim.nextcloud_staging_server_pv,
+    kubernetes_persistent_volume_claim.nextcloud_staging_server_pvc,
     kubernetes_persistent_volume_claim.nextcloud_staging_postgresql_pvc,
     kubernetes_persistent_volume_claim.nextcloud_staging_backup_pvc,
-    kubernetes_secret.nextcloud-secret
+    kubernetes_secret.nextcloud_staging_secret
   ]
 }
