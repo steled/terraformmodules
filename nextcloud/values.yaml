@@ -119,9 +119,11 @@ postgresql:
         mountPath: /backup
 
 service:
+  annotations:
+    "lbipam.cilium.io/ips": "${ip_address}"
   type: LoadBalancer
   port: 8080
-  loadBalancerIP: ${ip_address}
+  # loadBalancerIP: ${ip_address}
 
 persistence:
   enabled: true
