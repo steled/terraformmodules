@@ -17,3 +17,8 @@ variable "duckdns_webhook_values_yaml" {
   type = string
   description = "Path to the duckdns webhook values.yml file, relative to the root module"
 }
+
+variable "duckdns_webhook_ip_address" {
+  type        = string
+  description = "IP address for duckdns webhook service"
+}
