@@ -4,7 +4,7 @@ resource "kubernetes_ingress_v1" "hassio" {
     namespace   = kubernetes_namespace.hassio.metadata[0].name
     annotations = {
       "kubernetes.io/ingress.class" = "nginx"
-      "cert-manager.io/cluster-issuer" = "duckdns-webhook-cert-manager-webhook-duckdns-production"
+      "cert-manager.io/cluster-issuer" = "cert-manager-webhook-duckdns-production"
       "nginx.org/server-snippets" = <<EOF
         location / {
           proxy_set_header Host $host;
