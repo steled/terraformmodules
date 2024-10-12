@@ -2,7 +2,7 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: duckdns-webhook-cert-manager-webhook-duckdns-${environment}
+    cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-${environment}
     nginx.ingress.kubernetes.io/proxy-body-size: 32M
     nginx.ingress.kubernetes.io/server-snippet: |-
       location = /.well-known/carddav {
@@ -16,20 +16,22 @@ ingress:
       hosts:
         - ${nextcloud_domain}
 
-#securityContext:
-#  runAsGroup: 1000
-#  runAsNonRoot: true
-#  runAsUser: 1000
-
 lifecycle:
   postStartCommand: [ "/bin/sh", "-c", "echo \"ServerName ${ip_address}\" | tee -a /etc/apache2/apache2.conf" ] # && echo \"LogLevel debug\" | tee -a /etc/apache2/apache2.conf" ]
 
 nextcloud:
   host: ${nextcloud_domain}
 
+  # securityContext:
+  #   runAsGroup: 1000
+  #   runAsNonRoot: true
+  #   runAsUser: 1000
+
   existingSecret:
     enabled: true
     secretName: nextcloud-secret
+    usernameKey: nextcloud-username
+    passwordKey: nextcloud-password
 
   configs:
     custom.config.php: |-
@@ -55,6 +57,14 @@ nextcloud:
         'mail_smtpname' => '${smtp_username}',
         'mail_smtppassword' => '${smtp_password}',
       );
+    # logging.config.php: |-
+    #   <?php
+    #   $CONFIG = array (
+    #     'log_type' => 'file',
+    #     'logfile' => 'nextcloud.log',
+    #     'loglevel' => 0,
+    #     'logdateformat' => 'F d, Y H:i:s'
+    #     );
 
   extraEnv:
     - name: OVERWRITEHOST
@@ -98,14 +108,14 @@ postgresql:
         database: ${postgresql_postgresqldatabase}
         username: ${postgresql_postgresqlusername}
         password: ${postgresql_postgresqlpassword}
-  image:
-    repository: postgres
-    # check version here: 
-    # - https://github.com/nextcloud/helm/blob/master/charts/nextcloud/Chart.yaml
-    # - https://github.com/bitnami/charts/blob/master/bitnami/postgresql/Chart.yaml
-    # - https://hub.docker.com/_/postgres?tab=tags
-    tag: 11.6
-    pullPolicy: IfNotPresent
+  # image:
+  #   repository: postgres
+  #   # check version here: 
+  #   # - https://github.com/nextcloud/helm/blob/master/charts/nextcloud/Chart.yaml
+  #   # - https://github.com/bitnami/charts/blob/master/bitnami/postgresql/Chart.yaml
+  #   # - https://hub.docker.com/_/postgres?tab=tags
+  #   tag: 16.3
+  #   pullPolicy: IfNotPresent
   primary:
     persistence:
       enabled: true
