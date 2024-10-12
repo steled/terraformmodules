@@ -5,8 +5,8 @@ resource "kubernetes_secret" "nextcloud_staging_secret" {
   }
 
   data = {
-    nextcloud-username = var.nextcloud_staging_admin_username
-    nextcloud-password = var.nextcloud_staging_admin_password
+    nextcloud-username = var.nextcloud_admin_username
+    nextcloud-password = var.nextcloud_admin_password
   }
 
   type = "Opaque"
