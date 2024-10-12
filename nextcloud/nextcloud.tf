@@ -13,6 +13,8 @@ resource "kubernetes_namespace" "nextcloud" {
     inline = [
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server",
       "sudo chown 1000:1000 -R /ext/persistent/nextcloud/server/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/config",
+      "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/config/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/postgresql",
       "sudo chown 1001:1001 -R /ext/persistent/nextcloud/postgresql/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/backup",
