@@ -4,9 +4,9 @@ resource "kubernetes_namespace" "jd-sftp" {
   }
 
   connection {
-    type     = "ssh"
-    user     = var.ssh_user
-    host     = var.ssh_host
+    type = "ssh"
+    user = var.ssh_user
+    host = var.ssh_host
   }
 
   provisioner "remote-exec" {
@@ -40,8 +40,13 @@ module "jd" {
 module "sftp" {
   source = "./sftp"
 
-  namespace   = kubernetes_namespace.jd-sftp.metadata[0].name
-  values_yaml = var.sftp_values_yaml
+  namespace       = kubernetes_namespace.jd-sftp.metadata[0].name
+  values_yaml     = var.sftp_values_yaml
+  sftp_ip_address = var.sftp_ip_address
+
+  # values    = [ templatefile(var.sftp_values_yaml, {
+  #   sftp_ip_address = var.sftp_ip_address
+  # })]
 
   depends_on = [ module.jd, ]
 }

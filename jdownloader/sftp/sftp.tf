@@ -4,5 +4,7 @@ resource "helm_release" "sftp" {
 
   chart = "https://github.com/steled/sftp-server/archive/refs/tags/v0.3.11.tar.gz"
 
-  values = [ file(var.values_yaml) ]
+  values = [ templatefile(var.values_yaml, {
+    sftp_ip_address = var.sftp_ip_address
+  })]
 }
