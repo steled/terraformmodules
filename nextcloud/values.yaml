@@ -23,9 +23,13 @@ nextcloud:
   host: ${nextcloud_domain}
 
   # securityContext:
-  #   runAsGroup: 1000
+  #   runAsGroup: 33
+  #   runAsUser: 33
   #   runAsNonRoot: true
-  #   runAsUser: 1000
+  #   readOnlyRootFilesystem: false
+
+  # podSecurityContext:
+  #   fsGroup: 33
 
   existingSecret:
     enabled: true
@@ -64,7 +68,7 @@ nextcloud:
     #     'logfile' => 'nextcloud.log',
     #     'loglevel' => 0,
     #     'logdateformat' => 'F d, Y H:i:s'
-    #     );
+    #   );
 
   extraEnv:
     - name: OVERWRITEHOST
@@ -128,12 +132,12 @@ postgresql:
       - name: backup
         mountPath: /backup
 
-service:
-  annotations:
-    "lbipam.cilium.io/ips": "${ip_address}"
-  type: LoadBalancer
-  port: 8080
-  # loadBalancerIP: ${ip_address}
+# service:
+#   annotations:
+#     "lbipam.cilium.io/ips": "${ip_address}"
+#   type: LoadBalancer
+#   port: 8080
+#   # loadBalancerIP: ${ip_address}
 
 persistence:
   enabled: true
