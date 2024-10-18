@@ -11,14 +11,22 @@ resource "kubernetes_namespace" "nextcloud" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/backup",
+      "sudo chown 1001:1001 -R /ext/persistent/nextcloud/backup/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server",
       "sudo chown 1000:1000 -R /ext/persistent/nextcloud/server/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/config",
       "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/config/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/custom_apps",
+      "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/custom_apps/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/data",
+      "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/data/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/html",
+      "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/html/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/themes",
+      "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/themes/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/postgresql",
       "sudo chown 1001:1001 -R /ext/persistent/nextcloud/postgresql/",
-      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/backup",
-      "sudo chown 1001:1001 -R /ext/persistent/nextcloud/backup/",
     ]
   }
 }
