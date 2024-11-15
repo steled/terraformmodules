@@ -26,9 +26,9 @@ module "jd" {
 
   namespace = kubernetes_namespace.jd-sftp.metadata[0].name
 
-  env_JD_DEVICENAME = var.env_JD_DEVICENAME
-  env_JD_PASSWORD   = var.env_JD_PASSWORD
-  env_JD_EMAIL      = var.env_JD_EMAIL
+  env_jd_devicename = var.env_jd_devicename
+  env_jd_email      = var.env_jd_email
+  env_jd_password   = var.env_jd_password
 
 #  depends_on = [
 #    kubernetes_persistent_volume.jd-sftp-test-config-pvc,

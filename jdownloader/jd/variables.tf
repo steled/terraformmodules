@@ -3,14 +3,14 @@ variable "namespace" {
   description = "Name of the kubernetes namespace"
 }
 
-variable "env_JD_DEVICENAME" {
+variable "env_jd_devicename" {
   type = string
 }
 
-variable "env_JD_PASSWORD" {
+variable "env_jd_password" {
   type = string
 }
 
-variable "env_JD_EMAIL" {
+variable "env_jd_email" {
   type = string
 }
