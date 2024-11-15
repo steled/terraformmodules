@@ -11,6 +11,10 @@ resource "kubernetes_namespace" "nextcloud" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo mkdir --mode 0755 -p /ext/backup/nextcloud/postgresql",
+      "sudo chown steled:steled -R /ext/backup/nextcloud/postgresql/",
+      "sudo mkdir --mode 0755 -p /ext/backup/nextcloud/server",
+      "sudo chown steled:steled -R /ext/backup/nextcloud/server/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/backup",
       "sudo chown 1001:1001 -R /ext/persistent/nextcloud/backup/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server",
@@ -23,10 +27,20 @@ resource "kubernetes_namespace" "nextcloud" {
       "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/data/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/html",
       "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/html/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/root",
+      "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/root/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/themes",
       "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/themes/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/server/tmp",
+      "sudo chown www-data:www-data -R /ext/persistent/nextcloud/server/tmp/",
       "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/postgresql",
       "sudo chown 1001:1001 -R /ext/persistent/nextcloud/postgresql/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/redis",
+      "sudo chown 1001:1001 -R /ext/persistent/nextcloud/redis/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/redis/master",
+      "sudo chown 1001:1001 -R /ext/persistent/nextcloud/redis/master/",
+      "sudo mkdir --mode 0755 -p /ext/persistent/nextcloud/redis/replica",
+      "sudo chown 1001:1001 -R /ext/persistent/nextcloud/redis/replica/"
     ]
   }
 }
@@ -40,19 +54,20 @@ resource "helm_release" "nextcloud" {
   recreate_pods = true
 
   values = [ templatefile("${path.module}/values.yaml", {
-    nextcloud_domain = var.nextcloud_domain,
-    environment = var.environment,
-    ip_address = var.ip_address,
-    nextcloud_proxies = var.nextcloud_proxies
-    mail_fromaddress = var.mail_fromaddress
-    mail_domain = var.mail_domain
-    smtp_host = var.smtp_host
-    smtp_port = var.smtp_port
-    smtp_username = var.smtp_username
-    smtp_password = var.smtp_password
-    postgresql_postgresqlusername = var. postgresql_postgresqlusername,
-    postgresql_postgresqlpassword = var.postgresql_postgresqlpassword,
-    postgresql_postgresqldatabase = var.postgresql_postgresqldatabase
+    nextcloud_domain    = var.nextcloud_domain,
+    environment         = var.environment,
+    ip_address          = var.ip_address,
+    nextcloud_proxies   = var.nextcloud_proxies
+    mail_fromaddress    = var.mail_fromaddress
+    mail_domain         = var.mail_domain
+    redis_password      = var.redis_password
+    smtp_host           = var.smtp_host
+    smtp_port           = var.smtp_port
+    smtp_username       = var.smtp_username
+    smtp_password       = var.smtp_password
+    postgresql_username = var.postgresql_username,
+    postgresql_password = var.postgresql_password,
+    postgresql_database = var.postgresql_database
   }) ]
 
   namespace = kubernetes_namespace.nextcloud.metadata[0].name
@@ -63,6 +78,8 @@ resource "helm_release" "nextcloud" {
     kubernetes_persistent_volume_claim.nextcloud_server_pvc,
     kubernetes_persistent_volume_claim.nextcloud_postgresql_pvc,
     kubernetes_persistent_volume_claim.nextcloud_backup_pvc,
+    kubernetes_persistent_volume_claim.nextcloud_redis_master_pvc,
+    kubernetes_persistent_volume_claim.nextcloud_redis_replica_pvc,
     kubernetes_secret.nextcloud_secret
   ]
 }

@@ -8,6 +8,10 @@ variable "ssh_host" {
   description = "Host for SSH connection"
 }
 
+variable "maintenance_job_image" {
+  type = string
+}
+
 variable "kubernetes_namespace_name" {
   type = string
 }
@@ -49,6 +53,10 @@ variable "mail_domain" {
   type = string
 }
 
+variable "redis_password" {
+  type = string
+}
+
 variable "smtp_host" {
   type = string
 }
@@ -65,14 +73,14 @@ variable "smtp_password" {
   type = string
 }
 
-variable "postgresql_postgresqlusername" {
+variable "postgresql_username" {
   type = string
 }
 
-variable "postgresql_postgresqlpassword" {
+variable "postgresql_password" {
   type = string
 }
 
-variable "postgresql_postgresqldatabase" {
+variable "postgresql_database" {
   type = string
 }
