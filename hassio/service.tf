@@ -1,4 +1,4 @@
-resource "kubernetes_service" "hassio" {
+resource "kubernetes_service_v1" "hassio" {
   metadata {
     name      = "hassio"
     namespace = kubernetes_namespace.hassio.metadata[0].name
@@ -10,5 +10,6 @@ resource "kubernetes_service" "hassio" {
       target_port = 8123
       protocol    = "TCP"
     }
+    type = "ClusterIP"
   }
 }
