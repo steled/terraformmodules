@@ -34,7 +34,7 @@ resource "kubernetes_ingress_v1" "hassio" {
           path = "/"
           path_type = "Prefix"
         }
-      }  
+      }
     }
     tls {
       hosts = [ var.host ]
