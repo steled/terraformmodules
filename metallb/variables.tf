@@ -2,8 +2,8 @@ variable "namespace" {
   type = string
 }
 
-variable "version" {
-  type = string
+variable "metallb_version" {
+  type        = string
   description = "Set the version of metallb"
 }
 
@@ -12,6 +12,6 @@ variable "helm_values_addresses" {
 }
 
 variable "values_yaml" {
-  type = string
+  type        = string
   description = "Path to the values.yml file, relative to the root module"
 }

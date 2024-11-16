@@ -1,10 +1,10 @@
 variable "ssh_user" {
-  type = string
+  type        = string
   description = "Username for SSH connection"
 }
 
 variable "ssh_host" {
-  type = string
+  type        = string
   description = "Host for SSH connection"
 }
 
@@ -26,8 +26,13 @@ variable "env_jd_email" {
 }
 
 variable "sftp_values_yaml" {
-  type = string
+  type        = string
   description = "Path to the values.yml file, relative to the root module"
+}
+
+variable "sftp_version" {
+  type        = string
+  description = "Set the version of sftp"
 }
 
 variable "sftp_ip_address" {
