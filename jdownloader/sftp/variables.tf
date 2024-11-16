@@ -8,7 +8,12 @@ variable "sftp_ip_address" {
   description = "IP address for SFTP service"
 }
 
+variable "sftp_version" {
+  type        = string
+  description = "Set the version of sftp"
+}
+
 variable "values_yaml" {
-  type = string
+  type        = string
   description = "Path to the values.yml file, relative to the root module"
 }
