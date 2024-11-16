@@ -8,19 +8,22 @@ variable "ssh_host" {
   description = "Host for SSH connection"
 }
 
-variable "namespace" {
-  type = string
-  description = "Name of the kubernetes namespace"
-}
-
-variable "host" {
-  type = string
-}
-
-variable "ip" {
+variable "kubernetes_namespace_name" {
   type = string
 }
 
 variable "environment" {
+  type = string
+}
+
+variable "hashicorp_vault_domain" {
+  type = string  
+}
+
+variable "ip_address" {
+  type = string
+}
+
+variable "hashicorp_vault_version" {
   type = string
 }

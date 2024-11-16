@@ -39,15 +39,15 @@ resource "kubernetes_deployment" "jdownloader" {
 
           env {
             name  = "JD_DEVICENAME"
-            value = var.env_JD_DEVICENAME
+            value = var.env_jd_devicename
           }
           env {
             name  = "JD_PASSWORD"
-            value = var.env_JD_PASSWORD
+            value = var.env_jd_password
           }
           env {
             name  = "JD_EMAIL"
-            value = var.env_JD_EMAIL
+            value = var.env_jd_email
           }
 
           port {

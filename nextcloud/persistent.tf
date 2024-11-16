@@ -1,4 +1,4 @@
-resource "kubernetes_persistent_volume" "nextcloud-server-pv" {
+resource "kubernetes_persistent_volume" "nextcloud_server_pv" {
   metadata {
     name = "nextcloud-server-pv"
 #    annotations = {
@@ -24,7 +24,7 @@ resource "kubernetes_persistent_volume" "nextcloud-server-pv" {
   depends_on = [ kubernetes_namespace.nextcloud, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "nextcloud-server-pvc" {
+resource "kubernetes_persistent_volume_claim" "nextcloud_server_pvc" {
   metadata {
     name = "nextcloud-server-pvc"
     namespace = var.kubernetes_namespace_name
@@ -37,13 +37,13 @@ resource "kubernetes_persistent_volume_claim" "nextcloud-server-pvc" {
         storage = "8Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud-server-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_server_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud-server-pv, ]
+  depends_on = [ kubernetes_persistent_volume.nextcloud_server_pv, ]
 }
 
-resource "kubernetes_persistent_volume" "nextcloud-postgresql-pv" {
+resource "kubernetes_persistent_volume" "nextcloud_postgresql_pv" {
   metadata {
     name = "nextcloud-postgresql-pv"
 #    annotations = {
@@ -69,7 +69,7 @@ resource "kubernetes_persistent_volume" "nextcloud-postgresql-pv" {
   depends_on = [ kubernetes_namespace.nextcloud, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "nextcloud-postgresql-pvc" {
+resource "kubernetes_persistent_volume_claim" "nextcloud_postgresql_pvc" {
   metadata {
     name = "nextcloud-postgresql-pvc"
     namespace = var.kubernetes_namespace_name
@@ -82,13 +82,13 @@ resource "kubernetes_persistent_volume_claim" "nextcloud-postgresql-pvc" {
         storage = "8Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud-postgresql-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_postgresql_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud-postgresql-pv, ]
+  depends_on = [ kubernetes_persistent_volume.nextcloud_postgresql_pv, ]
 }
 
-resource "kubernetes_persistent_volume" "nextcloud-backup-pv" {
+resource "kubernetes_persistent_volume" "nextcloud_backup_pv" {
   metadata {
     name = "nextcloud-backup-pv"
 #    annotations = {
@@ -114,7 +114,7 @@ resource "kubernetes_persistent_volume" "nextcloud-backup-pv" {
   depends_on = [ kubernetes_namespace.nextcloud, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "nextcloud-backup-pvc" {
+resource "kubernetes_persistent_volume_claim" "nextcloud_backup_pvc" {
   metadata {
     name = "nextcloud-backup-pvc"
     namespace = var.kubernetes_namespace_name
@@ -127,8 +127,98 @@ resource "kubernetes_persistent_volume_claim" "nextcloud-backup-pvc" {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud-backup-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_backup_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud-backup-pv, ]
+  depends_on = [ kubernetes_persistent_volume.nextcloud_backup_pv, ]
+}
+
+resource "kubernetes_persistent_volume" "nextcloud_redis_master_pv" {
+  metadata {
+    name = "nextcloud-redis-master-pv"
+#    annotations = {
+#      "pv.beta.kubernetes.io/gid" = "3000"
+#    }
+    labels = {
+      type = "local"
+    }
+  }
+  spec {
+    storage_class_name = "manual"
+    capacity = {
+      storage = "1Gi"
+    }
+    access_modes = ["ReadWriteOnce"]
+    persistent_volume_source {
+      host_path {
+        path = "/ext/persistent/nextcloud/redis/master"
+      }
+    }
+  }
+
+  depends_on = [ kubernetes_namespace.nextcloud, ]
+}
+
+resource "kubernetes_persistent_volume_claim" "nextcloud_redis_master_pvc" {
+  metadata {
+    name = "nextcloud-redis-master-pvc"
+    namespace = var.kubernetes_namespace_name
+  }
+  spec {
+    storage_class_name = "manual"
+    access_modes = ["ReadWriteOnce"]
+    resources {
+      requests = {
+        storage = "1Gi"
+      }
+    }
+    volume_name = kubernetes_persistent_volume.nextcloud_redis_master_pv.metadata.0.name
+  }
+
+  depends_on = [ kubernetes_persistent_volume.nextcloud_redis_master_pv, ]
+}
+
+resource "kubernetes_persistent_volume" "nextcloud_redis_replica_pv" {
+  metadata {
+    name = "nextcloud-redis-replica-pv"
+#    annotations = {
+#      "pv.beta.kubernetes.io/gid" = "3000"
+#    }
+    labels = {
+      type = "local"
+    }
+  }
+  spec {
+    storage_class_name = "manual"
+    capacity = {
+      storage = "1Gi"
+    }
+    access_modes = ["ReadWriteOnce"]
+    persistent_volume_source {
+      host_path {
+        path = "/ext/persistent/nextcloud/redis/replica"
+      }
+    }
+  }
+
+  depends_on = [ kubernetes_namespace.nextcloud_staging, ]
+}
+
+resource "kubernetes_persistent_volume_claim" "nextcloud_redis_replica_pvc" {
+  metadata {
+    name = "nextcloud-redis-replica-pvc"
+    namespace = var.kubernetes_namespace_name
+  }
+  spec {
+    storage_class_name = "manual"
+    access_modes = ["ReadWriteOnce"]
+    resources {
+      requests = {
+        storage = "1Gi"
+      }
+    }
+    volume_name = kubernetes_persistent_volume.nextcloud_redis_replica_pv.metadata.0.name
+  }
+
+  depends_on = [ kubernetes_persistent_volume.nextcloud_redis_replica_pv, ]
 }

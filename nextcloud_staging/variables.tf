@@ -1,13 +1,27 @@
+variable "ssh_user" {
+  type = string
+  description = "Username for SSH connection"
+}
+
+variable "ssh_host" {
+  type = string
+  description = "Host for SSH connection"
+}
+
+variable "maintenance_job_image" {
+  type = string
+}
+
 variable "kubernetes_namespace_name" {
   type = string
 }
 
-variable "nextcloud_staging_version" {
+variable "nextcloud_version" {
   type = string
   description = "Set the version of nextcloud"
 }
 
-variable "nextcloud_staging_domain" {
+variable "nextcloud_domain" {
   type = string
 }
 
@@ -19,15 +33,15 @@ variable "ip_address" {
   type = string
 }
 
-variable "nextcloud_staging_admin_username" {
+variable "nextcloud_admin_username" {
   type = string
 }
 
-variable "nextcloud_staging_admin_password" {
+variable "nextcloud_admin_password" {
   type = string
 }
 
-variable "nextcloud_staging_proxies" {
+variable "nextcloud_proxies" {
   type = string
 }
 
@@ -36,6 +50,10 @@ variable "mail_fromaddress" {
 }
 
 variable "mail_domain" {
+  type = string
+}
+
+variable "redis_password" {
   type = string
 }
 
@@ -55,14 +73,14 @@ variable "smtp_password" {
   type = string
 }
 
-variable "postgresql_postgresqlusername" {
+variable "postgresql_username" {
   type = string
 }
 
-variable "postgresql_postgresqlpassword" {
+variable "postgresql_password" {
   type = string
 }
 
-variable "postgresql_postgresqldatabase" {
+variable "postgresql_database" {
   type = string
 }
