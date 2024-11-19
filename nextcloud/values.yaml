@@ -53,6 +53,13 @@ nginx:
   config:
     headers:
       "Strict-Transport-Security": "max-age=15768000; includeSubDomains; preload;"
+    custom: |-
+      fastcgi_send_timeout 180s;
+      fastcgi_read_timeout 180s;
+      proxy_connect_timeout 180s;
+      proxy_read_timeout 180s;
+      proxy_send_timeout 180s;
+      send_timeout 180s;
   # securityContext:
   #   runAsUser: 33
   #   runAsGroup: 33
@@ -97,15 +104,15 @@ nextcloud:
         'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
         'overwrite.cli.url' => 'https://${nextcloud_domain}',
         # 'mail_smtpdebug' => false,
-        # 'mail_from_address' => '${mail_fromaddress}',
-        # 'mail_smtpmode' => 'smtp',
-        # 'mail_sendmailmode' => 'smtp',
-        # 'mail_domain' => '${mail_domain}',
-        # 'mail_smtphost' => '${smtp_host}',
-        # 'mail_smtpport' => '${smtp_port}',
-        # 'mail_smtpauth' => 1,
-        # 'mail_smtpname' => '${smtp_username}',
-        # 'mail_smtppassword' => '${smtp_password}',
+        'mail_from_address' => '${mail_fromaddress}',
+        'mail_smtpmode' => 'smtp',
+        'mail_domain' => '${mail_domain}',
+        'mail_smtphost' => '${smtp_host}',
+        'mail_smtpport' => '${smtp_port}',
+        'mail_smtpsecure' => '',
+        'mail_smtpauth' => true,
+        'mail_smtpname' => '${smtp_username}',
+        'mail_smtppassword' => '${smtp_password}',
         'maintenance_window_start' => 1,
       );
     # enable for logging
@@ -129,15 +136,15 @@ nextcloud:
   # defaultConfigs:
   #   apcu.config.php: false
 
-  mail:
-    enabled: true
-    fromAddress: ${mail_fromaddress}
-    domain: ${mail_domain}
-    smtp:
-      name: ${smtp_username}
-      password: ${smtp_password}
-      host: ${smtp_host}
-      port: ${smtp_port}
+  # mail:
+  #   enabled: true
+  #   fromAddress: ${mail_fromaddress}
+  #   domain: ${mail_domain}
+  #   smtp:
+  #     name: ${smtp_username}
+  #     password: ${smtp_password}
+  #     host: ${smtp_host}
+  #     port: ${smtp_port}
 
 phpClientHttpsFix:
   enabled: true
