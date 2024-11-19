@@ -201,7 +201,7 @@ resource "kubernetes_persistent_volume" "nextcloud_redis_replica_pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.nextcloud_staging, ]
+  depends_on = [ kubernetes_namespace.nextcloud, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "nextcloud_redis_replica_pvc" {
