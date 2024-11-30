@@ -6,8 +6,15 @@
   "dependencyDashboard": true,
   "labels": ["dependencies"],
   "enabledManagers": [
+    "github-actions",
     "terraform"
   ],
+  "github-actions": {
+    "fileMatch": [
+      "(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$",
+      "(^|/)action\\.ya?ml$"
+    ]
+  },
   "terraform": {
     "commitMessageTopic": "Terraform {{depName}}",
     "fileMatch": [
@@ -17,11 +24,11 @@
   },
   "packageRules": [
     {
-      "matchManagers": ["terraform"],
+      "matchManagers": ["github-actions", "terraform"],
       "separateMinorPatch": true
     },
     {
-      "matchManagers": ["terraform"],
+      "matchManagers": ["github-actions", "terraform"],
       "matchUpdateTypes": ["patch"],
       "automerge": true
     }
