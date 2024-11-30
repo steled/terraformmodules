@@ -1,0 +1,29 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "baseBranches": [
+    "main"
+  ],
+  "dependencyDashboard": true,
+  "labels": ["dependencies"],
+  "enabledManagers": [
+    "terraform"
+  ],
+  "terraform": {
+    "commitMessageTopic": "Terraform {{depName}}",
+    "fileMatch": [
+      "\\.tf$"
+    ],
+    "pinDigests": false
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["terraform"],
+      "separateMinorPatch": true
+    },
+    {
+      "matchManagers": ["terraform"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ]
+}
