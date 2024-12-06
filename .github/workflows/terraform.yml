@@ -6,8 +6,8 @@ on:
       - main
   pull_request:
 
-env:
-  TF_VER: 1.2.8
+# env:
+#   TF_VER: 1.2.8
 
 jobs:
   terraform:
@@ -15,14 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: $TF_VER
+      # with:
+      #   terraform_version: $TF_VER
 
     - name: Terraform Format
       id: fmt
