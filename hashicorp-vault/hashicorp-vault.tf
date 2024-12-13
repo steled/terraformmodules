@@ -4,9 +4,9 @@ resource "kubernetes_namespace" "hashicorp_vault" {
   }
 
   connection {
-    type     = "ssh"
-    user     = var.ssh_user
-    host     = var.ssh_host
+    type = "ssh"
+    user = var.ssh_user
+    host = var.ssh_host
   }
 
   provisioner "remote-exec" {
@@ -18,18 +18,18 @@ resource "kubernetes_namespace" "hashicorp_vault" {
 }
 
 resource "helm_release" "hashicorp_vault" {
-  name       = "vault"
-  namespace  = kubernetes_namespace.hashicorp_vault.metadata[0].name
+  name      = "vault"
+  namespace = kubernetes_namespace.hashicorp_vault.metadata[0].name
 
   repository = "https://helm.releases.hashicorp.com"
   chart      = "vault"
   version    = var.hashicorp_vault_version
 
-  values     = [ templatefile("${path.module}/values.yaml", {
+  values = [templatefile("${path.module}/values.yaml", {
     environment            = var.environment
     hashicorp_vault_domain = var.hashicorp_vault_domain
     ip_address             = var.ip_address
-  }) ]
+  })]
 
   provisioner "local-exec" {
     when    = create

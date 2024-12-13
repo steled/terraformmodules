@@ -5,8 +5,8 @@ resource "kubernetes_namespace" "ingress" {
 }
 
 resource "helm_release" "ingress" {
-  name          = "ingress-nginx"
-  namespace     = kubernetes_namespace.ingress.metadata[0].name
+  name      = "ingress-nginx"
+  namespace = kubernetes_namespace.ingress.metadata[0].name
 
   repository    = "https://kubernetes.github.io/ingress-nginx"
   chart         = "ingress-nginx"
@@ -14,7 +14,7 @@ resource "helm_release" "ingress" {
   force_update  = false
   recreate_pods = true
 
-  values        = [ templatefile(var.values_yaml, {
+  values = [templatefile(var.values_yaml, {
     ingress_ip_address = var.ingress_ip_address
   })]
 }

@@ -1,6 +1,6 @@
 resource "kubernetes_config_map" "sdm" {
   metadata {
-    name = "smarter-device-manager"
+    name      = "smarter-device-manager"
     namespace = var.namespace
   }
 
@@ -48,7 +48,7 @@ resource "kubernetes_deployment" "sdm" {
             allow_privilege_escalation = false
 
             capabilities {
-              drop = [ "ALL" ]
+              drop = ["ALL"]
             }
           }
 

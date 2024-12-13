@@ -1,5 +1,5 @@
 variable "cert_manager_version" {
-  type = string
+  type        = string
   description = "Set the version of cert-manager"
 }
 
@@ -12,6 +12,6 @@ variable "cert_manager_email" {
 }
 
 variable "namespace" {
-  type = string
+  type        = string
   description = "Name of the kubernetes namespace"
 }

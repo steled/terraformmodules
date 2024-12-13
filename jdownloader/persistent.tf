@@ -1,9 +1,9 @@
 resource "kubernetes_persistent_volume" "jd-sftp-config-pv" {
   metadata {
     name = "jd-sftp-config-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
       app  = "jd-sftp"
@@ -22,17 +22,17 @@ resource "kubernetes_persistent_volume" "jd-sftp-config-pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.jd-sftp, ]
+  depends_on = [kubernetes_namespace.jd-sftp, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "jd-sftp-config-pvc" {
   metadata {
-    name = "jd-sftp-config-pvc"
+    name      = "jd-sftp-config-pvc"
     namespace = kubernetes_namespace.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "100Mi"
@@ -41,15 +41,15 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-config-pvc" {
     volume_name = kubernetes_persistent_volume.jd-sftp-config-pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.jd-sftp-config-pv, ]
+  depends_on = [kubernetes_persistent_volume.jd-sftp-config-pv, ]
 }
 
 resource "kubernetes_persistent_volume" "jd-sftp-downloads-pv" {
   metadata {
     name = "jd-sftp-downloads-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
       app  = "jd-sftp"
@@ -68,17 +68,17 @@ resource "kubernetes_persistent_volume" "jd-sftp-downloads-pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.jd-sftp, ]
+  depends_on = [kubernetes_namespace.jd-sftp, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "jd-sftp-downloads-pvc" {
   metadata {
-    name = "jd-sftp-downloads-pvc"
+    name      = "jd-sftp-downloads-pvc"
     namespace = kubernetes_namespace.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteMany"]
+    access_modes       = ["ReadWriteMany"]
     resources {
       requests = {
         storage = "50Gi"
@@ -87,15 +87,15 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-downloads-pvc" {
     volume_name = kubernetes_persistent_volume.jd-sftp-downloads-pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.jd-sftp-downloads-pv, ]
+  depends_on = [kubernetes_persistent_volume.jd-sftp-downloads-pv, ]
 }
 
 resource "kubernetes_persistent_volume" "jd-sftp-logs-pv" {
   metadata {
     name = "jd-sftp-logs-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
       app  = "jd-sftp"
@@ -114,17 +114,17 @@ resource "kubernetes_persistent_volume" "jd-sftp-logs-pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.jd-sftp, ]
+  depends_on = [kubernetes_namespace.jd-sftp, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "jd-sftp-logs-pvc" {
   metadata {
-    name = "jd-sftp-logs-pvc"
+    name      = "jd-sftp-logs-pvc"
     namespace = kubernetes_namespace.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "100Mi"
@@ -133,5 +133,5 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-logs-pvc" {
     volume_name = kubernetes_persistent_volume.jd-sftp-logs-pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.jd-sftp-logs-pv, ]
+  depends_on = [kubernetes_persistent_volume.jd-sftp-logs-pv, ]
 }

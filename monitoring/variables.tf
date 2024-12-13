@@ -3,7 +3,7 @@ variable "kubernetes_namespace_name" {
 }
 
 variable "monitoring_version" {
-  type = string
+  type        = string
   description = "Set the version of monitoring stack"
 }
 
