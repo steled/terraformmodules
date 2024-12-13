@@ -1,9 +1,9 @@
 resource "kubernetes_persistent_volume" "nextcloud_staging_server_pv" {
   metadata {
     name = "nextcloud-staging-server-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -21,17 +21,17 @@ resource "kubernetes_persistent_volume" "nextcloud_staging_server_pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.nextcloud_staging, ]
+  depends_on = [kubernetes_namespace.nextcloud_staging, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "nextcloud_staging_server_pvc" {
   metadata {
-    name = "nextcloud-staging-server-pvc"
+    name      = "nextcloud-staging-server-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "8Gi"
@@ -40,15 +40,15 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_staging_server_pvc" {
     volume_name = kubernetes_persistent_volume.nextcloud_staging_server_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud_staging_server_pv, ]
+  depends_on = [kubernetes_persistent_volume.nextcloud_staging_server_pv, ]
 }
 
 resource "kubernetes_persistent_volume" "nextcloud_staging_postgresql_pv" {
   metadata {
     name = "nextcloud-staging-postgresql-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -66,17 +66,17 @@ resource "kubernetes_persistent_volume" "nextcloud_staging_postgresql_pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.nextcloud_staging, ]
+  depends_on = [kubernetes_namespace.nextcloud_staging, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "nextcloud_staging_postgresql_pvc" {
   metadata {
-    name = "nextcloud-staging-postgresql-pvc"
+    name      = "nextcloud-staging-postgresql-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "8Gi"
@@ -85,15 +85,15 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_staging_postgresql_pvc"
     volume_name = kubernetes_persistent_volume.nextcloud_staging_postgresql_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud_staging_postgresql_pv, ]
+  depends_on = [kubernetes_persistent_volume.nextcloud_staging_postgresql_pv, ]
 }
 
 resource "kubernetes_persistent_volume" "nextcloud_staging_backup_pv" {
   metadata {
     name = "nextcloud-staging-backup-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -111,17 +111,17 @@ resource "kubernetes_persistent_volume" "nextcloud_staging_backup_pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.nextcloud_staging, ]
+  depends_on = [kubernetes_namespace.nextcloud_staging, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "nextcloud_staging_backup_pvc" {
   metadata {
-    name = "nextcloud-staging-backup-pvc"
+    name      = "nextcloud-staging-backup-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "1Gi"
@@ -130,15 +130,15 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_staging_backup_pvc" {
     volume_name = kubernetes_persistent_volume.nextcloud_staging_backup_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud_staging_backup_pv, ]
+  depends_on = [kubernetes_persistent_volume.nextcloud_staging_backup_pv, ]
 }
 
 resource "kubernetes_persistent_volume" "nextcloud_staging_redis_master_pv" {
   metadata {
     name = "nextcloud-staging-redis-master-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -156,17 +156,17 @@ resource "kubernetes_persistent_volume" "nextcloud_staging_redis_master_pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.nextcloud_staging, ]
+  depends_on = [kubernetes_namespace.nextcloud_staging, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "nextcloud_staging_redis_master_pvc" {
   metadata {
-    name = "nextcloud-staging-redis-master-pvc"
+    name      = "nextcloud-staging-redis-master-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "1Gi"
@@ -175,15 +175,15 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_staging_redis_master_pv
     volume_name = kubernetes_persistent_volume.nextcloud_staging_redis_master_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud_staging_redis_master_pv, ]
+  depends_on = [kubernetes_persistent_volume.nextcloud_staging_redis_master_pv, ]
 }
 
 resource "kubernetes_persistent_volume" "nextcloud_staging_redis_replica_pv" {
   metadata {
     name = "nextcloud-staging-redis-replica-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -201,17 +201,17 @@ resource "kubernetes_persistent_volume" "nextcloud_staging_redis_replica_pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.nextcloud_staging, ]
+  depends_on = [kubernetes_namespace.nextcloud_staging, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "nextcloud_staging_redis_replica_pvc" {
   metadata {
-    name = "nextcloud-staging-redis-replica-pvc"
+    name      = "nextcloud-staging-redis-replica-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "1Gi"
@@ -220,5 +220,5 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_staging_redis_replica_p
     volume_name = kubernetes_persistent_volume.nextcloud_staging_redis_replica_pv.metadata.0.name
   }
 
-  depends_on = [ kubernetes_persistent_volume.nextcloud_staging_redis_replica_pv, ]
+  depends_on = [kubernetes_persistent_volume.nextcloud_staging_redis_replica_pv, ]
 }

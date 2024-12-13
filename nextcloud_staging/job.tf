@@ -8,7 +8,7 @@ resource "kubernetes_job" "nextcloud_staging_maintenance_job" {
       metadata {}
       spec {
         container {
-          command                    = [ "/bin/sh", "-c", "su -s /bin/bash www-data -c 'php occ maintenance:repair --include-expensive && php occ db:add-missing-indices'" ]
+          command                    = ["/bin/sh", "-c", "su -s /bin/bash www-data -c 'php occ maintenance:repair --include-expensive && php occ db:add-missing-indices'"]
           image                      = var.maintenance_job_image
           image_pull_policy          = "IfNotPresent"
           name                       = "nextcloud-maintenance-job"
@@ -71,5 +71,5 @@ resource "kubernetes_job" "nextcloud_staging_maintenance_job" {
     update = "2m"
   }
 
-  depends_on = [ helm_release.nextcloud_staging ]
+  depends_on = [helm_release.nextcloud_staging]
 }

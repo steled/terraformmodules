@@ -1,10 +1,10 @@
 variable "ssh_user" {
-  type = string
+  type        = string
   description = "Username for SSH connection"
 }
 
 variable "ssh_host" {
-  type = string
+  type        = string
   description = "Host for SSH connection"
 }
 
@@ -17,7 +17,7 @@ variable "environment" {
 }
 
 variable "hashicorp_vault_domain" {
-  type = string  
+  type = string
 }
 
 variable "ip_address" {

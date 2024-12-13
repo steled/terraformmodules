@@ -4,9 +4,9 @@ resource "kubernetes_namespace" "hassio" {
   }
 
   connection {
-    type     = "ssh"
-    user     = var.ssh_user
-    host     = var.ssh_host
+    type = "ssh"
+    user = var.ssh_user
+    host = var.ssh_host
   }
 
   provisioner "remote-exec" {

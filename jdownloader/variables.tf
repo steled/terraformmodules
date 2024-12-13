@@ -9,7 +9,7 @@ variable "ssh_host" {
 }
 
 variable "namespace" {
-  type = string
+  type        = string
   description = "Name of the kubernetes namespace"
 }
 
