@@ -7,9 +7,9 @@ variable "monitoring_version" {
   description = "Set the version of monitoring stack"
 }
 
-variable "helm_release_name" {
-  type = string
-}
+# variable "helm_release_name" {
+#   type = string
+# }
 
 variable "grafana_admin_password" {
   type = string

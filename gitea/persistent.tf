@@ -37,7 +37,7 @@ resource "kubernetes_persistent_volume_claim" "gitea-server-pvc" {
         storage = "5Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-server-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.gitea-server-pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.gitea-server-pv, ]
@@ -82,7 +82,7 @@ resource "kubernetes_persistent_volume_claim" "gitea-postgresql-pvc" {
         storage = "5Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-postgresql-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.gitea-postgresql-pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.gitea-postgresql-pv, ]
@@ -127,7 +127,7 @@ resource "kubernetes_persistent_volume_claim" "gitea-backup-pvc" {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-backup-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.gitea-backup-pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.gitea-backup-pv, ]
