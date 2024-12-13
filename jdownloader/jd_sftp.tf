@@ -30,11 +30,11 @@ module "jd" {
   env_jd_email      = var.env_jd_email
   env_jd_password   = var.env_jd_password
 
-#  depends_on = [
-#    kubernetes_persistent_volume.jd-sftp-test-config-pvc,
-#    kubernetes_persistent_volume.jd-sftp-test-downloads-pvc,
-#    kubernetes_persistent_volume.jd-sftp-test-logs-pvc,
-#  ]
+  #  depends_on = [
+  #    kubernetes_persistent_volume.jd-sftp-test-config-pvc,
+  #    kubernetes_persistent_volume.jd-sftp-test-downloads-pvc,
+  #    kubernetes_persistent_volume.jd-sftp-test-logs-pvc,
+  #  ]
 }
 
 module "sftp" {
@@ -49,5 +49,5 @@ module "sftp" {
   #   sftp_ip_address = var.sftp_ip_address
   # })]
 
-  depends_on = [ module.jd, ]
+  depends_on = [module.jd, ]
 }

@@ -1,9 +1,9 @@
 resource "kubernetes_persistent_volume" "gitea-server-pv" {
   metadata {
     name = "gitea-server-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -21,34 +21,34 @@ resource "kubernetes_persistent_volume" "gitea-server-pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.gitea, ]
+  depends_on = [kubernetes_namespace.gitea, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "gitea-server-pvc" {
   metadata {
-    name = "gitea-server-pvc"
+    name      = "gitea-server-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "5Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-server-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.gitea-server-pv.metadata[0].name
   }
 
-  depends_on = [ kubernetes_persistent_volume.gitea-server-pv, ]
+  depends_on = [kubernetes_persistent_volume.gitea-server-pv, ]
 }
 
 resource "kubernetes_persistent_volume" "gitea-postgresql-pv" {
   metadata {
     name = "gitea-postgresql-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -66,34 +66,34 @@ resource "kubernetes_persistent_volume" "gitea-postgresql-pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.gitea, ]
+  depends_on = [kubernetes_namespace.gitea, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "gitea-postgresql-pvc" {
   metadata {
-    name = "gitea-postgresql-pvc"
+    name      = "gitea-postgresql-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "5Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-postgresql-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.gitea-postgresql-pv.metadata[0].name
   }
 
-  depends_on = [ kubernetes_persistent_volume.gitea-postgresql-pv, ]
+  depends_on = [kubernetes_persistent_volume.gitea-postgresql-pv, ]
 }
 
 resource "kubernetes_persistent_volume" "gitea-backup-pv" {
   metadata {
     name = "gitea-backup-pv"
-#    annotations = {
-#      "pv.beta.kubernetes.io/gid" = "3000"
-#    }
+    #    annotations = {
+    #      "pv.beta.kubernetes.io/gid" = "3000"
+    #    }
     labels = {
       type = "local"
     }
@@ -111,24 +111,24 @@ resource "kubernetes_persistent_volume" "gitea-backup-pv" {
     }
   }
 
-  depends_on = [ kubernetes_namespace.gitea, ]
+  depends_on = [kubernetes_namespace.gitea, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "gitea-backup-pvc" {
   metadata {
-    name = "gitea-backup-pvc"
+    name      = "gitea-backup-pvc"
     namespace = var.kubernetes_namespace_name
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-backup-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.gitea-backup-pv.metadata[0].name
   }
 
-  depends_on = [ kubernetes_persistent_volume.gitea-backup-pv, ]
+  depends_on = [kubernetes_persistent_volume.gitea-backup-pv, ]
 }

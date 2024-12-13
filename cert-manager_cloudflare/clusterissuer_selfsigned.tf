@@ -8,7 +8,7 @@ spec:
   selfSigned: {}
 YAML
 
-  depends_on = [ helm_release.certmanager ]
+  depends_on = [helm_release.certmanager]
 }
 
 resource "kubectl_manifest" "cert_manager_certificate_steled_selfsigned_ca" {

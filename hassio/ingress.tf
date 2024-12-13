@@ -1,9 +1,9 @@
 resource "kubernetes_ingress_v1" "hassio" {
   metadata {
-    name        = "hassio"
-    namespace   = kubernetes_namespace.hassio.metadata[0].name
+    name      = "hassio"
+    namespace = kubernetes_namespace.hassio.metadata[0].name
     annotations = {
-      "cert-manager.io/cluster-issuer" = "cloudflare-letsencrypt-${var.environment}"
+      "cert-manager.io/cluster-issuer"      = "cloudflare-letsencrypt-${var.environment}"
       "ingress.cilium.io/loadbalancer-mode" = "shared"
       # "nginx.org/server-snippets" = <<EOF
       #   location / {
@@ -25,19 +25,19 @@ resource "kubernetes_ingress_v1" "hassio" {
         path {
           backend {
             service {
-              name = kubernetes_service_v1.hassio.metadata.0.name
+              name = kubernetes_service_v1.hassio.metadata[0].name
               port {
                 number = 443
               }
             }
           }
-          path = "/"
+          path      = "/"
           path_type = "Prefix"
         }
       }
     }
     tls {
-      hosts = [ var.host ]
+      hosts       = [var.host]
       secret_name = "hassio-secret"
     }
   }

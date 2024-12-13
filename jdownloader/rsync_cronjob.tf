@@ -4,8 +4,8 @@ resource "kubernetes_cron_job_v1" "rsync_cronjob" {
     namespace = kubernetes_namespace.jd-sftp.metadata[0].name
   }
   spec {
-    concurrency_policy            = "Replace"
-    failed_jobs_history_limit     = 5
+    concurrency_policy        = "Replace"
+    failed_jobs_history_limit = 5
     # schedule                      = "@hourly"
     schedule                      = "0 4 * * *"
     starting_deadline_seconds     = 10
@@ -19,21 +19,21 @@ resource "kubernetes_cron_job_v1" "rsync_cronjob" {
           metadata {}
           spec {
             container {
-              command = [ 
+              command = [
                 "/bin/sh",
                 "-c",
-                "apk add --update --no-cache rsync openssh-client &>/dev/null && rm -rf /var/cache/apk/* && rsync -ave \"ssh -i ~/.ssh/upload.id_rsa -o StrictHostKeyChecking=no\" ${var.rsync_src_folder_path} ${var.rsync_username}@${var.rsync_dst_ip_address}:${var.rsync_dst_folder_path}" ]
+              "apk add --update --no-cache rsync openssh-client &>/dev/null && rm -rf /var/cache/apk/* && rsync -ave \"ssh -i ~/.ssh/upload.id_rsa -o StrictHostKeyChecking=no\" ${var.rsync_src_folder_path} ${var.rsync_username}@${var.rsync_dst_ip_address}:${var.rsync_dst_folder_path}"]
               image             = "alpine:latest"
               image_pull_policy = "IfNotPresent"
               name              = "rsync"
               volume_mount {
                 # mount_path = "/ext/persistent/jdownloader/downloads"
                 mount_path = kubernetes_persistent_volume.jd-sftp-downloads-pv.spec[0].persistent_volume_source[0].host_path[0].path
-                name = "downloads-lailaps"
+                name       = "downloads-lailaps"
               }
               volume_mount {
                 mount_path = "/root/.ssh"
-                name = "rsync-ssh-key"
+                name       = "rsync-ssh-key"
               }
             }
             volume {
@@ -46,7 +46,7 @@ resource "kubernetes_cron_job_v1" "rsync_cronjob" {
               name = "rsync-ssh-key"
               secret {
                 default_mode = "0600"
-                secret_name = "rsync"
+                secret_name  = "rsync"
               }
             }
             restart_policy = "OnFailure"

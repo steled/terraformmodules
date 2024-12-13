@@ -4,9 +4,9 @@ resource "kubernetes_namespace" "nextcloud" {
   }
 
   connection {
-    type     = "ssh"
-    user     = var.ssh_user
-    host     = var.ssh_host
+    type = "ssh"
+    user = var.ssh_user
+    host = var.ssh_host
   }
 
   provisioner "remote-exec" {
@@ -46,14 +46,14 @@ resource "kubernetes_namespace" "nextcloud" {
 }
 
 resource "helm_release" "nextcloud" {
-  name          = "nextcloud"
+  name = "nextcloud"
 
   repository    = "https://nextcloud.github.io/helm/"
   chart         = "nextcloud"
   version       = var.nextcloud_version # take care of update path; check version here: https://github.com/nextcloud/helm/blob/master/charts/nextcloud/Chart.yaml
   recreate_pods = true
 
-  values = [ templatefile("${path.module}/values.yaml", {
+  values = [templatefile("${path.module}/values.yaml", {
     nextcloud_domain    = var.nextcloud_domain,
     environment         = var.environment,
     ip_address          = var.ip_address,
@@ -68,7 +68,7 @@ resource "helm_release" "nextcloud" {
     postgresql_username = var.postgresql_username,
     postgresql_password = var.postgresql_password,
     postgresql_database = var.postgresql_database
-  }) ]
+  })]
 
   namespace = kubernetes_namespace.nextcloud.metadata[0].name
 

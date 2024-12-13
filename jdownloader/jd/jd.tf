@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "jdownloader" {
   metadata {
-    name = "jd"
+    name      = "jd"
     namespace = var.namespace
 
     labels = {
@@ -25,20 +25,20 @@ resource "kubernetes_deployment" "jdownloader" {
       }
 
       spec {
-#        restart_policy = "Never"
+        #        restart_policy = "Never"
         security_context {
-          run_as_user  = 1000
-          run_as_group = 1000
+          run_as_user     = 1000
+          run_as_group    = 1000
           run_as_non_root = true
         }
 
         container {
-          image = "antlafarge/jdownloader:alpine"
+          image             = "antlafarge/jdownloader:alpine"
           image_pull_policy = "Always"
-          name  = "jd"
+          name              = "jd"
 
           env {
-            name  = "JD_DEVICENAME"
+            name = "JD_DEVICENAME"
             value_from {
               secret_key_ref {
                 name = "jdownloader"
@@ -48,7 +48,7 @@ resource "kubernetes_deployment" "jdownloader" {
             # value = var.env_jd_devicename
           }
           env {
-            name  = "JD_PASSWORD"
+            name = "JD_PASSWORD"
             value_from {
               secret_key_ref {
                 name = "jdownloader"
@@ -58,7 +58,7 @@ resource "kubernetes_deployment" "jdownloader" {
             # value = var.env_jd_password
           }
           env {
-            name  = "JD_EMAIL"
+            name = "JD_EMAIL"
             value_from {
               secret_key_ref {
                 name = "jdownloader"
@@ -73,7 +73,7 @@ resource "kubernetes_deployment" "jdownloader" {
             container_port = 3129
             protocol       = "TCP"
           }
-        
+
           volume_mount {
             mount_path = "/jdownloader/cfg"
             name       = "config"
