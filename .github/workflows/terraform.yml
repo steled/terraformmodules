@@ -88,4 +88,5 @@ jobs:
         output-file: README.md
         output-method: inject
         recursive: "true"
+        recursive-path: "./"
         working-dir: .
