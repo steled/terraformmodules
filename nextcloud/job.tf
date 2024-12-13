@@ -57,7 +57,7 @@ resource "kubernetes_job" "nextcloud_maintenance_job" {
         volume {
           name = "nextcloud-main"
           persistent_volume_claim {
-            claim_name = kubernetes_persistent_volume_claim.nextcloud_server_pvc.metadata.0.name
+            claim_name = kubernetes_persistent_volume_claim.nextcloud_server_pvc.metadata[0].name
           }
         }
       }

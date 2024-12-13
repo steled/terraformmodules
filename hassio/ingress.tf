@@ -25,7 +25,7 @@ resource "kubernetes_ingress_v1" "hassio" {
         path {
           backend {
             service {
-              name = kubernetes_service_v1.hassio.metadata.0.name
+              name = kubernetes_service_v1.hassio.metadata[0].name
               port {
                 number = 443
               }

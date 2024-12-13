@@ -37,7 +37,7 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_server_pvc" {
         storage = "8Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud_server_pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_server_pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.nextcloud_server_pv, ]
@@ -82,7 +82,7 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_postgresql_pvc" {
         storage = "8Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud_postgresql_pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_postgresql_pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.nextcloud_postgresql_pv, ]
@@ -127,7 +127,7 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_backup_pvc" {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud_backup_pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_backup_pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.nextcloud_backup_pv, ]
@@ -172,7 +172,7 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_redis_master_pvc" {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud_redis_master_pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_redis_master_pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.nextcloud_redis_master_pv, ]
@@ -217,7 +217,7 @@ resource "kubernetes_persistent_volume_claim" "nextcloud_redis_replica_pvc" {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.nextcloud_redis_replica_pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.nextcloud_redis_replica_pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.nextcloud_redis_replica_pv, ]

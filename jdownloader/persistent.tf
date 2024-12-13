@@ -38,7 +38,7 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-config-pvc" {
         storage = "100Mi"
       }
     }
-    volume_name = kubernetes_persistent_volume.jd-sftp-config-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.jd-sftp-config-pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.jd-sftp-config-pv, ]
@@ -84,7 +84,7 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-downloads-pvc" {
         storage = "50Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.jd-sftp-downloads-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.jd-sftp-downloads-pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.jd-sftp-downloads-pv, ]
@@ -130,7 +130,7 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-logs-pvc" {
         storage = "100Mi"
       }
     }
-    volume_name = kubernetes_persistent_volume.jd-sftp-logs-pv.metadata.0.name
+    volume_name = kubernetes_persistent_volume.jd-sftp-logs-pv.metadata[0].name
   }
 
   depends_on = [kubernetes_persistent_volume.jd-sftp-logs-pv, ]
