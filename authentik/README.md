@@ -3,17 +3,16 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.10.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.16.1 |
-| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | ~> 2.1.3 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.35.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.10 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.17 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.35 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_helm"></a> [helm](#provider\_helm) | ~> 2.16.1 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | ~> 2.35.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | ~> 2.17 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | ~> 2.35 |
 
 ## Modules
 
@@ -23,22 +22,23 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [helm_release.hashicorp_vault](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
-| [kubernetes_namespace.hashicorp_vault](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
-| [kubernetes_persistent_volume.hashicorp_vault_data_pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
-| [kubernetes_persistent_volume_claim.hashicorp_vault_data_pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim) | resource |
+| [helm_release.authentik](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [kubernetes_namespace.authentik](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [kubernetes_secret.authentik_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_authentik_bootstrap_email"></a> [authentik\_bootstrap\_email](#input\_authentik\_bootstrap\_email) | n/a | `string` | n/a | yes |
+| <a name="input_authentik_bootstrap_password"></a> [authentik\_bootstrap\_password](#input\_authentik\_bootstrap\_password) | n/a | `string` | n/a | yes |
+| <a name="input_authentik_bootstrap_token"></a> [authentik\_bootstrap\_token](#input\_authentik\_bootstrap\_token) | n/a | `string` | n/a | yes |
+| <a name="input_authentik_domains"></a> [authentik\_domains](#input\_authentik\_domains) | n/a | `string` | n/a | yes |
+| <a name="input_authentik_secret_key"></a> [authentik\_secret\_key](#input\_authentik\_secret\_key) | n/a | `string` | n/a | yes |
+| <a name="input_authentik_version"></a> [authentik\_version](#input\_authentik\_version) | n/a | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | n/a | `string` | n/a | yes |
-| <a name="input_hashicorp_vault_domain"></a> [hashicorp\_vault\_domain](#input\_hashicorp\_vault\_domain) | n/a | `string` | n/a | yes |
-| <a name="input_hashicorp_vault_version"></a> [hashicorp\_vault\_version](#input\_hashicorp\_vault\_version) | n/a | `string` | n/a | yes |
-| <a name="input_ip_address"></a> [ip\_address](#input\_ip\_address) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_namespace_name"></a> [kubernetes\_namespace\_name](#input\_kubernetes\_namespace\_name) | n/a | `string` | n/a | yes |
-| <a name="input_ssh_host"></a> [ssh\_host](#input\_ssh\_host) | Host for SSH connection | `string` | n/a | yes |
-| <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | Username for SSH connection | `string` | n/a | yes |
+| <a name="input_postgresql_password"></a> [postgresql\_password](#input\_postgresql\_password) | n/a | `string` | n/a | yes |
 
 ## Outputs
 
