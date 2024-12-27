@@ -51,4 +51,3 @@ ui:
   # annotations:
   #   "lbipam.cilium.io/ips": ${ip_address}
   # serviceType: "LoadBalancer"
-
