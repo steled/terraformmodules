@@ -13,7 +13,7 @@ resource "helm_release" "victoriametrics" {
   version    = var.victoriametrics_version
 
   values = [templatefile("${path.module}/values.yaml", {
-    environment = var.environment
+    environment           = var.environment
     vmsingle_domains      = var.vmsingle_domains
     alertmanager_domains  = var.alertmanager_domains
     vmalert_domains       = var.vmalert_domains
