@@ -60,8 +60,8 @@ resource "kubernetes_deployment_v1" "apprise" {
 
           port {
             container_port = 8000
-            name = "http"
-            protocol = "TCP"
+            name           = "http"
+            protocol       = "TCP"
           }
 
           resources {
@@ -76,32 +76,32 @@ resource "kubernetes_deployment_v1" "apprise" {
           }
 
           volume_mount {
-            name = "apprise-data"
+            name       = "apprise-data"
             mount_path = "/config"
           }
 
           volume_mount {
-            name = "apprise-data"
+            name       = "apprise-data"
             mount_path = "/plugin"
           }
 
           volume_mount {
-            name = "apprise-data"
+            name       = "apprise-data"
             mount_path = "/attach"
           }
 
           volume_mount {
-            name = "apprise-api-htpasswd-secret-volume"
+            name       = "apprise-api-htpasswd-secret-volume"
             mount_path = "/etc/nginx/.htpasswd"
-            read_only = true
-            sub_path = ".htpasswd"
+            read_only  = true
+            sub_path   = ".htpasswd"
           }
 
           volume_mount {
-            name = "apprise-api-override-conf-config-volume"
+            name       = "apprise-api-override-conf-config-volume"
             mount_path = "/etc/nginx/location-override.conf"
-            read_only = true
-            sub_path = "location-override.conf"
+            read_only  = true
+            sub_path   = "location-override.conf"
           }
         }
 

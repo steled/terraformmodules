@@ -1,6 +1,6 @@
 resource "kubernetes_persistent_volume_claim_v1" "apprise_data" {
   metadata {
-    name = "apprise-data"
+    name      = "apprise-data"
     namespace = var.kubernetes_namespace_name
 
     labels = {
