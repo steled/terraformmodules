@@ -23,6 +23,8 @@ resource "helm_release" "victoriametrics" {
     grafana_client_secret = var.grafana_client_secret
     telegram_bot_token    = var.telegram_bot_token
     telegram_chat_id      = var.telegram_chat_id
-    # authentik_url         = var.authentik_url
+    notify_domain         = var.notify_domain
+    apprise_config_id     = var.apprise_config_id
+    authentik_url         = var.authentik_url
   })]
 }

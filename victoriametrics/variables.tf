@@ -58,6 +58,14 @@ variable "telegram_chat_id" {
   type = string
 }
 
-# variable "authentik_url" {
-#   type = string
-# }
+variable "authentik_url" {
+  type = string
+}
+
+variable "notify_domain" {
+  type = string
+}
+
+variable "apprise_config_id" {
+  type = string
+}
