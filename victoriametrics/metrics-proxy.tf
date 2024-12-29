@@ -82,7 +82,7 @@ resource "kubernetes_daemon_set_v1" "metrics_proxy" {
           name  = "metrics-proxy"
 
           env {
-            name  = "NODE_IP"
+            name = "NODE_IP"
             value_from {
               field_ref {
                 api_version = "v1"
