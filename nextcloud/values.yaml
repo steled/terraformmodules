@@ -181,9 +181,6 @@ postgresql:
   #   tag: 16.3
   #   pullPolicy: IfNotPresent
   primary:
-    persistence:
-      enabled: true
-      existingClaim: nextcloud-postgresql-pvc
     extraVolumes:
       - name: backup
         persistentVolumeClaim:
@@ -191,6 +188,10 @@ postgresql:
     extraVolumeMounts:
       - name: backup
         mountPath: /backup
+    persistence:
+      enabled: true
+      existingClaim: nextcloud-postgresql-pvc
+    resourcesPreset: "small"
 
 # service:
 #   annotations:
@@ -214,11 +215,13 @@ redis:
     persistence:
       enabled: true
       existingClaim: nextcloud-redis-master-pvc
+    resourcesPreset: "micro"
   replica:
     persistence:
       enabled: true
       existingClaim: nextcloud-redis-replica-pvc
     replicaCount: 1
+    resourcesPreset: "micro"
 
 livenessProbe:
   initialDelaySeconds: 240
