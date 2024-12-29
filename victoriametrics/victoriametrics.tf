@@ -5,7 +5,7 @@ resource "kubernetes_namespace" "victoriametrics" {
 }
 
 resource "helm_release" "victoriametrics" {
-  name      = "vmks"
+  name      = "victoria-metrics-k8s-stack"
   namespace = kubernetes_namespace.victoriametrics.metadata[0].name
 
   repository = "https://victoriametrics.github.io/helm-charts/"
@@ -21,5 +21,8 @@ resource "helm_release" "victoriametrics" {
     grafana_domains       = var.grafana_domains
     grafana_client_id     = var.grafana_client_id
     grafana_client_secret = var.grafana_client_secret
+    telegram_bot_token    = var.telegram_bot_token
+    telegram_chat_id      = var.telegram_chat_id
+    # authentik_url         = var.authentik_url
   })]
 }
