@@ -43,7 +43,7 @@ module "sftp" {
   namespace       = kubernetes_namespace.jd-sftp.metadata[0].name
   values_yaml     = var.sftp_values_yaml
   sftp_ip_address = var.sftp_ip_address
-  sftp_version    = var.sftp_version
+  sftp_chart      = var.sftp_chart
 
   # values    = [ templatefile(var.sftp_values_yaml, {
   #   sftp_ip_address = var.sftp_ip_address

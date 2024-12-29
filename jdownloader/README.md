@@ -47,9 +47,9 @@
 | <a name="input_rsync_src_folder_path"></a> [rsync\_src\_folder\_path](#input\_rsync\_src\_folder\_path) | Source folder path for rsync cronjob | `string` | n/a | yes |
 | <a name="input_rsync_upload_id_rsa"></a> [rsync\_upload\_id\_rsa](#input\_rsync\_upload\_id\_rsa) | Path to the upload.id\_rsa file | `string` | n/a | yes |
 | <a name="input_rsync_username"></a> [rsync\_username](#input\_rsync\_username) | Username for rsync cronjob | `string` | n/a | yes |
+| <a name="input_sftp_chart"></a> [sftp\_chart](#input\_sftp\_chart) | Set the version of sftp | `string` | n/a | yes |
 | <a name="input_sftp_ip_address"></a> [sftp\_ip\_address](#input\_sftp\_ip\_address) | IP address for SFTP service | `string` | n/a | yes |
 | <a name="input_sftp_values_yaml"></a> [sftp\_values\_yaml](#input\_sftp\_values\_yaml) | Path to the values.yml file, relative to the root module | `string` | n/a | yes |
-| <a name="input_sftp_version"></a> [sftp\_version](#input\_sftp\_version) | Set the version of sftp | `string` | n/a | yes |
 | <a name="input_ssh_host"></a> [ssh\_host](#input\_ssh\_host) | Host for SSH connection | `string` | n/a | yes |
 | <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | Username for SSH connection | `string` | n/a | yes |
 

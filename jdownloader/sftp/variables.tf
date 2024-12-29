@@ -8,7 +8,7 @@ variable "sftp_ip_address" {
   description = "IP address for SFTP service"
 }
 
-variable "sftp_version" {
+variable "sftp_chart" {
   type        = string
   description = "Set the version of sftp"
 }

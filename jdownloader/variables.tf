@@ -30,7 +30,7 @@ variable "sftp_values_yaml" {
   description = "Path to the values.yml file, relative to the root module"
 }
 
-variable "sftp_version" {
+variable "sftp_chart" {
   type        = string
   description = "Set the version of sftp"
 }
