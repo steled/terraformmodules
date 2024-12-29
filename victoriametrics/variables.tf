@@ -45,3 +45,27 @@ variable "grafana_client_id" {
 variable "grafana_client_secret" {
   type = string
 }
+
+variable "haproxy_version" {
+  type = string
+}
+
+variable "telegram_bot_token" {
+  type = string
+}
+
+variable "telegram_chat_id" {
+  type = string
+}
+
+variable "authentik_url" {
+  type = string
+}
+
+variable "notify_domain" {
+  type = string
+}
+
+variable "apprise_config_id" {
+  type = string
+}
