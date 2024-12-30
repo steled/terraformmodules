@@ -12,7 +12,7 @@ resource "helm_release" "longhorn" {
   chart      = "longhorn"
   version    = var.longhorn_version
 
-  values = [templatefile("${path.module}/values.yaml", {
+  values = [templatefile(var.values_yaml, {
     environment = var.environment
     domain      = var.domain
   })]

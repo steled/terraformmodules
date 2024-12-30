@@ -53,7 +53,7 @@ resource "helm_release" "nextcloud" {
   version       = var.nextcloud_version # take care of update path; check version here: https://github.com/nextcloud/helm/blob/master/charts/nextcloud/Chart.yaml
   recreate_pods = true
 
-  values = [templatefile("${path.module}/values.yaml", {
+  values = [templatefile(var.values_yaml, {
     nextcloud_domain    = var.nextcloud_domain,
     environment         = var.environment,
     ip_address          = var.ip_address,

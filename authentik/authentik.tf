@@ -12,7 +12,7 @@ resource "helm_release" "authentik" {
   chart      = "authentik"
   version    = var.authentik_version
 
-  values = [templatefile("${path.module}/values.yaml", {
+  values = [templatefile(var.values_yaml, {
     environment          = var.environment
     authentik_domains    = var.authentik_domains
     authentik_secret_key = var.authentik_secret_key

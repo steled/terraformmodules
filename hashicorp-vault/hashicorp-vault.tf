@@ -25,7 +25,7 @@ resource "helm_release" "hashicorp_vault" {
   chart      = "vault"
   version    = var.hashicorp_vault_version
 
-  values = [templatefile("${path.module}/values.yaml", {
+  values = [templatefile(var.values_yaml, {
     environment            = var.environment
     hashicorp_vault_domain = var.hashicorp_vault_domain
     ip_address             = var.ip_address

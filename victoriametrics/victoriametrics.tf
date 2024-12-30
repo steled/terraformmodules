@@ -12,7 +12,7 @@ resource "helm_release" "victoriametrics" {
   chart      = "victoria-metrics-k8s-stack"
   version    = var.victoriametrics_version
 
-  values = [templatefile("${path.module}/values.yaml", {
+  values = [templatefile(var.values_yaml, {
     environment           = var.environment
     vmsingle_domains      = var.vmsingle_domains
     alertmanager_domains  = var.alertmanager_domains
