@@ -33,3 +33,8 @@ variable "authentik_bootstrap_token" {
 variable "authentik_bootstrap_email" {
   type = string
 }
+
+variable "values_yaml" {
+  type        = string
+  description = "Path to the values.yml file, relative to the root module"
+}

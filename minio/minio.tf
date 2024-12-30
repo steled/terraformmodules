@@ -12,7 +12,7 @@ resource "helm_release" "minio" {
   chart      = "minio"
   version    = var.minio_version
 
-  values = [templatefile("${path.module}/values.yaml", {
+  values = [templatefile(var.values_yaml, {
     environment             = var.environment
     ingress_domains         = var.ingress_domains
     console_ingress_domains = var.console_ingress_domains

@@ -17,3 +17,8 @@ variable "longhorn_version" {
 # variable "basic_auth" {
 #   type = string
 # }
+
+variable "values_yaml" {
+  type        = string
+  description = "Path to the values.yml file, relative to the root module"
+}
