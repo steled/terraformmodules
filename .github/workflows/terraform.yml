@@ -9,6 +9,7 @@ on:
   #     - main
   pull_request:
 
+    
 #  if a new commit is pushed to the main branch while a previous run is still in progress, the previous run will be cancelled and the new one will start
 concurrency:
   group: ci-${{ github.ref }}
