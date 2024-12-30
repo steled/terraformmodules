@@ -46,6 +46,7 @@ No modules.
 | <a name="input_notify_domain"></a> [notify\_domain](#input\_notify\_domain) | n/a | `string` | n/a | yes |
 | <a name="input_telegram_bot_token"></a> [telegram\_bot\_token](#input\_telegram\_bot\_token) | n/a | `string` | n/a | yes |
 | <a name="input_telegram_chat_id"></a> [telegram\_chat\_id](#input\_telegram\_chat\_id) | n/a | `string` | n/a | yes |
+| <a name="input_values_yaml"></a> [values\_yaml](#input\_values\_yaml) | Path to the values.yml file, relative to the root module | `string` | n/a | yes |
 | <a name="input_victoriametrics_version"></a> [victoriametrics\_version](#input\_victoriametrics\_version) | n/a | `string` | n/a | yes |
 | <a name="input_vmagent_domains"></a> [vmagent\_domains](#input\_vmagent\_domains) | n/a | `string` | n/a | yes |
 | <a name="input_vmalert_domains"></a> [vmalert\_domains](#input\_vmalert\_domains) | n/a | `string` | n/a | yes |

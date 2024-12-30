@@ -42,6 +42,7 @@ No modules.
 | <a name="input_user1_password"></a> [user1\_password](#input\_user1\_password) | n/a | `string` | n/a | yes |
 | <a name="input_user1_policy"></a> [user1\_policy](#input\_user1\_policy) | n/a | `string` | n/a | yes |
 | <a name="input_user1_secretKey"></a> [user1\_secretKey](#input\_user1\_secretKey) | n/a | `string` | n/a | yes |
+| <a name="input_values_yaml"></a> [values\_yaml](#input\_values\_yaml) | Path to the values.yml file, relative to the root module | `string` | n/a | yes |
 
 ## Outputs
 
