@@ -77,7 +77,11 @@ variable "postgresql_username" {
   type = string
 }
 
-variable "postgresql_password" {
+variable "postgresql_user_password" {
+  type = string
+}
+
+variable "postgresql_admin_password" {
   type = string
 }
 

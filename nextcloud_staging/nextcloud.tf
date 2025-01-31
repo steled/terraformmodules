@@ -66,7 +66,6 @@ resource "helm_release" "nextcloud_staging" {
     smtp_username       = var.smtp_username,
     smtp_password       = var.smtp_password,
     postgresql_username = var.postgresql_username,
-    postgresql_password = var.postgresql_password,
     postgresql_database = var.postgresql_database
   })]
 
