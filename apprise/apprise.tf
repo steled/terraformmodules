@@ -6,6 +6,19 @@ resource "kubernetes_namespace" "apprise" {
       name = "apprise"
     }
   }
+
+  connection {
+    type = "ssh"
+    user = var.ssh_user
+    host = var.ssh_host
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mkdir --mode 0755 -p /ext/persistent/apprise/data",
+      "sudo chown 1000:1000 -R /ext/persistent/apprise/data/",
+    ]
+  }
 }
 
 resource "kubernetes_deployment_v1" "apprise" {
@@ -124,7 +137,7 @@ resource "kubernetes_deployment_v1" "apprise" {
         volume {
           name = "apprise-data"
           persistent_volume_claim {
-            claim_name = kubernetes_persistent_volume_claim_v1.apprise_data.metadata[0].name
+            claim_name = kubernetes_persistent_volume_claim_v1.apprise_data_pvc.metadata[0].name
           }
         }
       }
