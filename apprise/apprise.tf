@@ -85,46 +85,46 @@ resource "kubernetes_deployment_v1" "apprise" {
             mount_path = "/plugin"
           }
 
+          # volume_mount {
+          #   name       = "apprise-api-htpasswd-secret-volume"
+          #   mount_path = "/etc/nginx/.htpasswd"
+          #   read_only  = true
+          #   sub_path   = ".htpasswd"
+          # }
+
+          # volume_mount {
+          #   name       = "apprise-api-override-conf-config-volume"
+          #   mount_path = "/etc/nginx/location-override.conf"
+          #   read_only  = true
+          #   sub_path   = "location-override.conf"
+          # }
+
           volume_mount {
             name       = "apprise-data"
             mount_path = "/attach"
-          }
-
-          volume_mount {
-            name       = "apprise-api-htpasswd-secret-volume"
-            mount_path = "/etc/nginx/.htpasswd"
-            read_only  = true
-            sub_path   = ".htpasswd"
-          }
-
-          volume_mount {
-            name       = "apprise-api-override-conf-config-volume"
-            mount_path = "/etc/nginx/location-override.conf"
-            read_only  = true
-            sub_path   = "location-override.conf"
           }
         }
 
         restart_policy = "Always"
 
-        volume {
-          name = "apprise-api-override-conf-config-volume"
-          config_map {
-            name = kubernetes_config_map_v1.apprise_api_override_conf_config.metadata[0].name
-          }
-        }
+        # volume {
+        #   name = "apprise-api-htpasswd-secret-volume"
+        #   secret {
+        #     secret_name = kubernetes_secret_v1.apprise_api_htpasswd_secret.metadata[0].name
+        #   }
+        # }
+
+        # volume {
+        #   name = "apprise-api-override-conf-config-volume"
+        #   config_map {
+        #     name = kubernetes_config_map_v1.apprise_api_override_conf_config.metadata[0].name
+        #   }
+        # }
 
         volume {
           name = "apprise-data"
           persistent_volume_claim {
             claim_name = kubernetes_persistent_volume_claim_v1.apprise_data.metadata[0].name
-          }
-        }
-
-        volume {
-          name = "apprise-api-htpasswd-secret-volume"
-          secret {
-            secret_name = kubernetes_secret_v1.apprise_api_htpasswd_secret.metadata[0].name
           }
         }
       }
