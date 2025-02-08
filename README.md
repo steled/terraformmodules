@@ -1,30 +1,5 @@
+![renovate workflow](https://github.com/steled/terraformmodules/actions/workflows/renovate.yml/badge.svg) ![terraform workflow](https://github.com/steled/terraformmodules/actions/workflows/terraform.yml/badge.svg)
+
 # terraformmodules
 
-
-# TF Docs
-
-<!-- BEGIN_TF_DOCS -->
-## Requirements
-
-No requirements.
-
-## Providers
-
-No providers.
-
-## Modules
-
-No modules.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
+Repository for my Terraform modules
