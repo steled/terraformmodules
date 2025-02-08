@@ -1,4 +1,4 @@
-![renovate workflow](https://github.com/steled/terraformmodules/actions/workflows/renovate.yml/badge.svg) ![terraform workflow](https://github.com/steled/terraformmodules/actions/workflows/terraform.yml/badge.svg)
+![renovate workflow](https://github.com/steled/terraformmodules/actions/workflows/renovate.yaml/badge.svg) ![terraform workflow](https://github.com/steled/terraformmodules/actions/workflows/terraform.yaml/badge.svg)
 
 # terraformmodules
 
