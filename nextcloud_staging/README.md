@@ -52,8 +52,9 @@ No modules.
 | <a name="input_nextcloud_domain"></a> [nextcloud\_domain](#input\_nextcloud\_domain) | n/a | `string` | n/a | yes |
 | <a name="input_nextcloud_proxies"></a> [nextcloud\_proxies](#input\_nextcloud\_proxies) | n/a | `string` | n/a | yes |
 | <a name="input_nextcloud_version"></a> [nextcloud\_version](#input\_nextcloud\_version) | Set the version of nextcloud | `string` | n/a | yes |
+| <a name="input_postgresql_admin_password"></a> [postgresql\_admin\_password](#input\_postgresql\_admin\_password) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_database"></a> [postgresql\_database](#input\_postgresql\_database) | n/a | `string` | n/a | yes |
-| <a name="input_postgresql_password"></a> [postgresql\_password](#input\_postgresql\_password) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_user_password"></a> [postgresql\_user\_password](#input\_postgresql\_user\_password) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_username"></a> [postgresql\_username](#input\_postgresql\_username) | n/a | `string` | n/a | yes |
 | <a name="input_redis_password"></a> [redis\_password](#input\_redis\_password) | n/a | `string` | n/a | yes |
 | <a name="input_smtp_host"></a> [smtp\_host](#input\_smtp\_host) | n/a | `string` | n/a | yes |
