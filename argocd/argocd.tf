@@ -35,4 +35,6 @@ resource "helm_release" "argocd-apps" {
   version    = var.argocd_apps_version
 
   values = [file(var.argocd_apps_values_yaml)]
+
+  depends_on = [ helm_release.argocd ]
 }
