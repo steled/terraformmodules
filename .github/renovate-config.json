@@ -2,7 +2,7 @@
   "assigneesFromCodeOwners": true,
   "branchConcurrentLimit": 3,
   "branchPrefix": "renovate/",
-  "gitAuthor": "github-actions[bot]@users.noreply.github.com",
+  "gitAuthor": "steled <34886888+steled@users.noreply.github.com>",
   "onboarding": false,
   "platform": "github",
   "prConcurrentLimit": 10,
@@ -10,5 +10,5 @@
   "repositories": [
     "steled/terraformmodules"
   ],
-  "username": "github-actions[bot]"
+  "username": "steled"
 }
