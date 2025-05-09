@@ -4,32 +4,42 @@
     "main"
   ],
   "dependencyDashboard": true,
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
   "enabledManagers": [
     "github-actions",
     "terraform"
   ],
   "github-actions": {
-    "fileMatch": [
-      "(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$",
-      "(^|/)action\\.ya?ml$"
+    "managerFilePatterns": [
+      "/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/",
+      "/(^|/)action\\.ya?ml$/"
     ]
   },
   "terraform": {
     "commitMessageTopic": "Terraform {{depName}}",
-    "fileMatch": [
-      "\\.tf$"
+    "managerFilePatterns": [
+      "/\\.tf$/"
     ],
     "pinDigests": false
   },
   "packageRules": [
     {
-      "matchManagers": ["github-actions", "terraform"],
+      "matchManagers": [
+        "github-actions",
+        "terraform"
+      ],
       "separateMinorPatch": true
     },
     {
-      "matchManagers": ["github-actions", "terraform"],
-      "matchUpdateTypes": ["patch"],
+      "matchManagers": [
+        "github-actions",
+        "terraform"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true
     }
   ]
