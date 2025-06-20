@@ -12,10 +12,12 @@ resource "helm_release" "certmanager" {
   chart      = "cert-manager"
   version    = var.cert_manager_version # check version here: https://artifacthub.io/packages/helm/cert-manager/cert-manager/
 
-  set {
-    name  = "installCRDs"
-    value = "true"
-  }
+  set = [
+    {
+      name  = "crds.enabled"
+      value = "true"
+    }
+  ]
 
   provisioner "local-exec" {
     when    = destroy
