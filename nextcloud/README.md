@@ -4,14 +4,14 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.10 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 3.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 3.0.1 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.35 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_helm"></a> [helm](#provider\_helm) | 3.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | ~> 3.0.1 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | ~> 2.35 |
 
 ## Modules
@@ -22,7 +22,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [helm_release.nextcloud](https://registry.terraform.io/providers/hashicorp/helm/3.0/docs/resources/release) | resource |
+| [helm_release.nextcloud](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [kubernetes_job.nextcloud_maintenance_job](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/job) | resource |
 | [kubernetes_namespace.nextcloud](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
 | [kubernetes_persistent_volume.nextcloud_backup_pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
