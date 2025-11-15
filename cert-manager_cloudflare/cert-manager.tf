@@ -16,6 +16,18 @@ resource "helm_release" "certmanager" {
     {
       name  = "crds.enabled"
       value = "true"
+    },
+    {
+      name  = "config.apiVersion"
+      value = "controller.config.cert-manager.io/v1alpha1"
+    },
+    {
+      name  = "config.kind"
+      value = "ControllerConfiguration"
+    },
+    {
+      name  = "config.enableGatewayAPI"
+      value = "true"
     }
   ]
 
