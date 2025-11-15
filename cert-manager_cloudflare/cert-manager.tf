@@ -18,6 +18,10 @@ resource "helm_release" "certmanager" {
       value = "true"
     },
     {
+      name  = "crds.keep"
+      value = "false"
+    },
+    {
       name  = "config.apiVersion"
       value = "controller.config.cert-manager.io/v1alpha1"
     },
