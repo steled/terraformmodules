@@ -17,7 +17,7 @@ resource "helm_release" "argocd" {
     domain                    = var.domain
     telegram_bot_token        = var.telegram_bot_token
     accounts_steled_password  = var.accounts_steled_password
-    argocd_apps_sshPrivateKey = var.apps_sshPrivateKey
+    apps_sshPrivateKey        = var.apps_sshPrivateKey
   })]
 
   provisioner "local-exec" {
