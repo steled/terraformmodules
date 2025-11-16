@@ -32,12 +32,12 @@ variable "argocd_apps_values_yaml" {
   description = "Path to the Argo CD Apps values.yml file, relative to the root module"
 }
 
-variable "argocd_accounts_steled_password" {
+variable "accounts_steled_password" {
   type        = string
   description = "Password for Argo CD user steled"
 }
 
-variable "argocd_apps_sshPrivateKey" {
+variable "apps_sshPrivateKey" {
   type        = string
   description = "SSH private key for argocd-apps repository"
 }
