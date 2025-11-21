@@ -30,8 +30,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_argocd_accounts_steled_password"></a> [argocd\_accounts\_steled\_password](#input\_argocd\_accounts\_steled\_password) | Password for Argo CD user steled | `string` | n/a | yes |
-| <a name="input_argocd_apps_sshPrivateKey"></a> [argocd\_apps\_sshPrivateKey](#input\_argocd\_apps\_sshPrivateKey) | SSH private key for argocd-apps repository | `string` | n/a | yes |
+| <a name="input_accounts_steled_password"></a> [accounts\_steled\_password](#input\_accounts\_steled\_password) | Password for Argo CD user steled | `string` | n/a | yes |
+| <a name="input_apps_sshPrivateKey"></a> [apps\_sshPrivateKey](#input\_apps\_sshPrivateKey) | SSH private key for argocd-apps repository | `string` | n/a | yes |
 | <a name="input_argocd_apps_values_yaml"></a> [argocd\_apps\_values\_yaml](#input\_argocd\_apps\_values\_yaml) | Path to the Argo CD Apps values.yml file, relative to the root module | `string` | n/a | yes |
 | <a name="input_argocd_apps_version"></a> [argocd\_apps\_version](#input\_argocd\_apps\_version) | n/a | `string` | n/a | yes |
 | <a name="input_argocd_values_yaml"></a> [argocd\_values\_yaml](#input\_argocd\_values\_yaml) | Path to the Argo CD values.yml file, relative to the root module | `string` | n/a | yes |
