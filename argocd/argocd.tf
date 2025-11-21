@@ -17,11 +17,11 @@ resource "helm_release" "argocd" {
   version    = var.argocd_version
 
   values = [templatefile(var.argocd_values_yaml, {
-    environment               = var.environment
-    domain                    = var.domain
-    telegram_bot_token        = var.telegram_bot_token
-    accounts_steled_password  = var.accounts_steled_password
-    apps_sshPrivateKey        = var.apps_sshPrivateKey
+    environment              = var.environment
+    domain                   = var.domain
+    telegram_bot_token       = var.telegram_bot_token
+    accounts_steled_password = var.accounts_steled_password
+    apps_sshPrivateKey       = var.apps_sshPrivateKey
   })]
 
   provisioner "local-exec" {
