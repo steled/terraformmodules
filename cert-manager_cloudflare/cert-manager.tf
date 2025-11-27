@@ -13,7 +13,7 @@ resource "helm_release" "certmanager" {
   version    = var.cert_manager_version # check version here: https://artifacthub.io/packages/helm/cert-manager/cert-manager/
 
   values = [
-    "${file("${path.module}/values.yaml")}"
+    file("${path.module}/values.yaml")
   ]
 
   # set = [
