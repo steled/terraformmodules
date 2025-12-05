@@ -19,7 +19,7 @@ spec:
 YAML
 
   depends_on = [
-    kubernetes_secret.cloudflare_api_token_secret,
+    kubernetes_secret_v1.cloudflare_api_token_secret,
     helm_release.certmanager
   ]
 }
@@ -45,7 +45,7 @@ spec:
 YAML
 
   depends_on = [
-    kubernetes_secret.cloudflare_api_token_secret,
+    kubernetes_secret_v1.cloudflare_api_token_secret,
     helm_release.certmanager
   ]
 }

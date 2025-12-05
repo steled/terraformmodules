@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "jd-sftp" {
+resource "kubernetes_namespace_v1" "jd-sftp" {
   metadata {
     name = var.namespace
   }
@@ -24,7 +24,7 @@ resource "kubernetes_namespace" "jd-sftp" {
 module "jd" {
   source = "./jd"
 
-  namespace = kubernetes_namespace.jd-sftp.metadata[0].name
+  namespace = kubernetes_namespace_v1.jd-sftp.metadata[0].name
 
   env_jd_devicename = var.env_jd_devicename
   env_jd_email      = var.env_jd_email
@@ -40,7 +40,7 @@ module "jd" {
 module "sftp" {
   source = "./sftp"
 
-  namespace       = kubernetes_namespace.jd-sftp.metadata[0].name
+  namespace       = kubernetes_namespace_v1.jd-sftp.metadata[0].name
   values_yaml     = var.sftp_values_yaml
   sftp_ip_address = var.sftp_ip_address
   sftp_chart      = var.sftp_chart

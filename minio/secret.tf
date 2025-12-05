@@ -1,7 +1,7 @@
-resource "kubernetes_secret" "minio_basic_auth_secret" {
+resource "kubernetes_secret_v1" "minio_basic_auth_secret" {
   metadata {
     name      = "minio-secret"
-    namespace = kubernetes_namespace.minio.metadata[0].name
+    namespace = kubernetes_namespace_v1.minio.metadata[0].name
   }
 
   data = {

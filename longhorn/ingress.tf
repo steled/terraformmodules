@@ -1,7 +1,7 @@
 # resource "kubernetes_ingress_v1" "longhorn" {
 #   metadata {
 #     name      = "longhorn"
-#     namespace = kubernetes_namespace.longhorn.metadata[0].name
+#     namespace = kubernetes_namespace_v1.longhorn.metadata[0].name
 #     annotations = {
 #       "cert-manager.io/cluster-issuer"      = "cloudflare-letsencrypt-${var.environment}"
 #       "ingress.cilium.io/loadbalancer-mode" = "shared"

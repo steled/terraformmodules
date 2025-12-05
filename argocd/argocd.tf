@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "argocd" {
+resource "kubernetes_namespace_v1" "argocd" {
   metadata {
     labels = {
       shared-gateway-access = "true"
@@ -32,7 +32,7 @@ resource "helm_release" "argocd" {
 
 resource "helm_release" "argocd-apps" {
   name      = "argocd-apps"
-  namespace = kubernetes_namespace.argocd.metadata[0].name
+  namespace = kubernetes_namespace_v1.argocd.metadata[0].name
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argocd-apps"

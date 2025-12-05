@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "hassio" {
+resource "kubernetes_namespace_v1" "hassio" {
   metadata {
     name = var.namespace
   }

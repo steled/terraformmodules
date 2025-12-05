@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "monitoring" {
+resource "kubernetes_namespace_v1" "monitoring" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -20,5 +20,5 @@ resource "helm_release" "monitoring" {
     grafana_domain         = var.grafana_domain
   })]
 
-  namespace = kubernetes_namespace.monitoring.metadata[0].name
+  namespace = kubernetes_namespace_v1.monitoring.metadata[0].name
 }

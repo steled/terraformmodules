@@ -1,4 +1,4 @@
-resource "kubernetes_persistent_volume" "apprise_data_pv" {
+resource "kubernetes_persistent_volume_v1" "apprise_data_pv" {
   metadata {
     name = "apprise-data-pv"
     labels = {
@@ -38,8 +38,8 @@ resource "kubernetes_persistent_volume_claim_v1" "apprise_data_pvc" {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.apprise_data_pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.apprise_data_pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.apprise_data_pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.apprise_data_pv, ]
 }

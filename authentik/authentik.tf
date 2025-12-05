@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "authentik" {
+resource "kubernetes_namespace_v1" "authentik" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "authentik" {
 
 resource "helm_release" "authentik" {
   name      = "authentik"
-  namespace = kubernetes_namespace.authentik.metadata[0].name
+  namespace = kubernetes_namespace_v1.authentik.metadata[0].name
 
   repository = "https://charts.goauthentik.io"
   chart      = "authentik"

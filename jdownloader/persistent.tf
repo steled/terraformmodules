@@ -1,4 +1,4 @@
-resource "kubernetes_persistent_volume" "jd-sftp-config-pv" {
+resource "kubernetes_persistent_volume_v1" "jd-sftp-config-pv" {
   metadata {
     name = "jd-sftp-config-pv"
     #    annotations = {
@@ -22,13 +22,13 @@ resource "kubernetes_persistent_volume" "jd-sftp-config-pv" {
     }
   }
 
-  depends_on = [kubernetes_namespace.jd-sftp, ]
+  depends_on = [kubernetes_namespace_v1.jd-sftp, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "jd-sftp-config-pvc" {
+resource "kubernetes_persistent_volume_claim_v1" "jd-sftp-config-pvc" {
   metadata {
     name      = "jd-sftp-config-pvc"
-    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
+    namespace = kubernetes_namespace_v1.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
@@ -38,13 +38,13 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-config-pvc" {
         storage = "100Mi"
       }
     }
-    volume_name = kubernetes_persistent_volume.jd-sftp-config-pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.jd-sftp-config-pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.jd-sftp-config-pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.jd-sftp-config-pv, ]
 }
 
-resource "kubernetes_persistent_volume" "jd-sftp-downloads-pv" {
+resource "kubernetes_persistent_volume_v1" "jd-sftp-downloads-pv" {
   metadata {
     name = "jd-sftp-downloads-pv"
     #    annotations = {
@@ -68,13 +68,13 @@ resource "kubernetes_persistent_volume" "jd-sftp-downloads-pv" {
     }
   }
 
-  depends_on = [kubernetes_namespace.jd-sftp, ]
+  depends_on = [kubernetes_namespace_v1.jd-sftp, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "jd-sftp-downloads-pvc" {
+resource "kubernetes_persistent_volume_claim_v1" "jd-sftp-downloads-pvc" {
   metadata {
     name      = "jd-sftp-downloads-pvc"
-    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
+    namespace = kubernetes_namespace_v1.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
@@ -84,13 +84,13 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-downloads-pvc" {
         storage = "50Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.jd-sftp-downloads-pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.jd-sftp-downloads-pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.jd-sftp-downloads-pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.jd-sftp-downloads-pv, ]
 }
 
-resource "kubernetes_persistent_volume" "jd-sftp-logs-pv" {
+resource "kubernetes_persistent_volume_v1" "jd-sftp-logs-pv" {
   metadata {
     name = "jd-sftp-logs-pv"
     #    annotations = {
@@ -114,13 +114,13 @@ resource "kubernetes_persistent_volume" "jd-sftp-logs-pv" {
     }
   }
 
-  depends_on = [kubernetes_namespace.jd-sftp, ]
+  depends_on = [kubernetes_namespace_v1.jd-sftp, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "jd-sftp-logs-pvc" {
+resource "kubernetes_persistent_volume_claim_v1" "jd-sftp-logs-pvc" {
   metadata {
     name      = "jd-sftp-logs-pvc"
-    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
+    namespace = kubernetes_namespace_v1.jd-sftp.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
@@ -130,8 +130,8 @@ resource "kubernetes_persistent_volume_claim" "jd-sftp-logs-pvc" {
         storage = "100Mi"
       }
     }
-    volume_name = kubernetes_persistent_volume.jd-sftp-logs-pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.jd-sftp-logs-pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.jd-sftp-logs-pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.jd-sftp-logs-pv, ]
 }

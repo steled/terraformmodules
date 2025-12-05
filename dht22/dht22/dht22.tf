@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "dht22" {
+resource "kubernetes_deployment_v1" "dht22" {
   metadata {
     name      = "dht22"
     namespace = var.namespace

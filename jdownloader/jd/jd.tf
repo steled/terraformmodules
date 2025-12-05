@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "jdownloader" {
+resource "kubernetes_deployment_v1" "jdownloader" {
   metadata {
     name      = "jd"
     namespace = var.namespace

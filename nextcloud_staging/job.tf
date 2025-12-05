@@ -1,7 +1,7 @@
-resource "kubernetes_job" "nextcloud_staging_maintenance_job" {
+resource "kubernetes_job_v1" "nextcloud_staging_maintenance_job" {
   metadata {
     name      = "nextcloud-staging-maintenance-job"
-    namespace = kubernetes_namespace.nextcloud_staging.metadata[0].name
+    namespace = kubernetes_namespace_v1.nextcloud_staging.metadata[0].name
   }
   spec {
     template {
@@ -57,7 +57,7 @@ resource "kubernetes_job" "nextcloud_staging_maintenance_job" {
         volume {
           name = "nextcloud-main"
           persistent_volume_claim {
-            claim_name = kubernetes_persistent_volume_claim.nextcloud_staging_server_pvc.metadata[0].name
+            claim_name = kubernetes_persistent_volume_claim_v1.nextcloud_staging_server_pvc.metadata[0].name
           }
         }
       }

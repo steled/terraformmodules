@@ -1,4 +1,4 @@
-resource "kubernetes_config_map" "sdm" {
+resource "kubernetes_config_map_v1" "sdm" {
   metadata {
     name      = "smarter-device-manager"
     namespace = var.namespace
@@ -12,7 +12,7 @@ CONF
   }
 }
 
-resource "kubernetes_deployment" "sdm" {
+resource "kubernetes_deployment_v1" "sdm" {
   metadata {
     name      = "smarter-device-manager"
     namespace = var.namespace

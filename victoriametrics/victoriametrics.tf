@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "victoriametrics" {
+resource "kubernetes_namespace_v1" "victoriametrics" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "victoriametrics" {
 
 resource "helm_release" "victoriametrics" {
   name      = "victoria-metrics-k8s-stack"
-  namespace = kubernetes_namespace.victoriametrics.metadata[0].name
+  namespace = kubernetes_namespace_v1.victoriametrics.metadata[0].name
 
   repository = "https://victoriametrics.github.io/helm-charts/"
   chart      = "victoria-metrics-k8s-stack"

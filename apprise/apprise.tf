@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "apprise" {
+resource "kubernetes_namespace_v1" "apprise" {
   metadata {
     name = var.kubernetes_namespace_name
 

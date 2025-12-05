@@ -17,7 +17,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: steled-selfsigned-ca
-  namespace: ${kubernetes_namespace.certmanager.metadata[0].name}
+  namespace: ${kubernetes_namespace_v1.certmanager.metadata[0].name}
 spec:
   commonName: steled-selfsigned-ca
   isCA: true

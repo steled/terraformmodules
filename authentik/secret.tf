@@ -1,7 +1,7 @@
-resource "kubernetes_secret" "authentik_secret" {
+resource "kubernetes_secret_v1" "authentik_secret" {
   metadata {
     name      = "authentik-secret"
-    namespace = kubernetes_namespace.authentik.metadata[0].name
+    namespace = kubernetes_namespace_v1.authentik.metadata[0].name
   }
 
   data = {
