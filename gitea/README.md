@@ -23,14 +23,14 @@ No modules.
 | Name | Type |
 |------|------|
 | [helm_release.gitea](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
-| [kubernetes_namespace.gitea](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
-| [kubernetes_persistent_volume.gitea-backup-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
-| [kubernetes_persistent_volume.gitea-postgresql-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
-| [kubernetes_persistent_volume.gitea-server-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
-| [kubernetes_persistent_volume_claim.gitea-backup-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim) | resource |
-| [kubernetes_persistent_volume_claim.gitea-postgresql-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim) | resource |
+| [kubernetes_namespace_v1.gitea](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
 | [kubernetes_persistent_volume_claim.gitea-server-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim) | resource |
-| [kubernetes_secret.gitea-admin-secret](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret) | resource |
+| [kubernetes_persistent_volume_claim_v1.gitea-backup-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim_v1) | resource |
+| [kubernetes_persistent_volume_claim_v1.gitea-postgresql-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim_v1) | resource |
+| [kubernetes_persistent_volume_v1.gitea-backup-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_v1) | resource |
+| [kubernetes_persistent_volume_v1.gitea-postgresql-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_v1) | resource |
+| [kubernetes_persistent_volume_v1.gitea-server-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_v1) | resource |
+| [kubernetes_secret_v1.gitea-admin-secret](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 
 ## Inputs
 

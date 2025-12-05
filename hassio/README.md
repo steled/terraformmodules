@@ -21,9 +21,9 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [kubernetes_endpoints.hassio](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/endpoints) | resource |
+| [kubernetes_endpoints_v1.hassio](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/endpoints_v1) | resource |
 | [kubernetes_ingress_v1.hassio](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/ingress_v1) | resource |
-| [kubernetes_namespace.hassio](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [kubernetes_namespace_v1.hassio](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
 | [kubernetes_service_v1.hassio](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service_v1) | resource |
 
 ## Inputs

@@ -30,8 +30,8 @@ No modules.
 | [kubectl_manifest.cert_manager_cluster_issuer_letsencrypt_staging](https://registry.terraform.io/providers/alekc/kubectl/latest/docs/resources/manifest) | resource |
 | [kubectl_manifest.cert_manager_cluster_issuer_selfsigned_issuer](https://registry.terraform.io/providers/alekc/kubectl/latest/docs/resources/manifest) | resource |
 | [kubectl_manifest.cert_manager_cluster_issuer_steled_ca_issuer](https://registry.terraform.io/providers/alekc/kubectl/latest/docs/resources/manifest) | resource |
-| [kubernetes_namespace.certmanager](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
-| [kubernetes_secret.cloudflare_api_token_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret) | resource |
+| [kubernetes_namespace_v1.certmanager](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
+| [kubernetes_secret_v1.cloudflare_api_token_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 
 ## Inputs
 

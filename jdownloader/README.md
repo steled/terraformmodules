@@ -25,13 +25,13 @@
 | Name | Type |
 |------|------|
 | [kubernetes_cron_job_v1.rsync_cronjob](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/cron_job_v1) | resource |
-| [kubernetes_namespace.jd-sftp](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
-| [kubernetes_persistent_volume.jd-sftp-config-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
-| [kubernetes_persistent_volume.jd-sftp-downloads-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
-| [kubernetes_persistent_volume.jd-sftp-logs-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume) | resource |
-| [kubernetes_persistent_volume_claim.jd-sftp-config-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim) | resource |
-| [kubernetes_persistent_volume_claim.jd-sftp-downloads-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim) | resource |
-| [kubernetes_persistent_volume_claim.jd-sftp-logs-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim) | resource |
+| [kubernetes_namespace_v1.jd-sftp](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
+| [kubernetes_persistent_volume_claim_v1.jd-sftp-config-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim_v1) | resource |
+| [kubernetes_persistent_volume_claim_v1.jd-sftp-downloads-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim_v1) | resource |
+| [kubernetes_persistent_volume_claim_v1.jd-sftp-logs-pvc](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_claim_v1) | resource |
+| [kubernetes_persistent_volume_v1.jd-sftp-config-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_v1) | resource |
+| [kubernetes_persistent_volume_v1.jd-sftp-downloads-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_v1) | resource |
+| [kubernetes_persistent_volume_v1.jd-sftp-logs-pv](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume_v1) | resource |
 | [kubernetes_secret_v1.rsync_secret](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret_v1) | resource |
 
 ## Inputs

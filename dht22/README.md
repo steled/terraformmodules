@@ -23,7 +23,7 @@
 
 | Name | Type |
 |------|------|
-| [kubernetes_namespace.sdm-dht22](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [kubernetes_namespace_v1.sdm-dht22](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
 
 ## Inputs
 

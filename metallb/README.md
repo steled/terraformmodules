@@ -26,7 +26,7 @@ No modules.
 |------|------|
 | [helm_release.metallb](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [kubectl_manifest.metallb_ipaddresspool](https://registry.terraform.io/providers/alekc/kubectl/latest/docs/resources/manifest) | resource |
-| [kubernetes_namespace.metallb](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [kubernetes_namespace_v1.metallb](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
 
 ## Inputs
 
