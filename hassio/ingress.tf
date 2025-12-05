@@ -1,7 +1,7 @@
 resource "kubernetes_ingress_v1" "hassio" {
   metadata {
     name      = "hassio"
-    namespace = kubernetes_namespace.hassio.metadata[0].name
+    namespace = kubernetes_namespace_v1.hassio.metadata[0].name
     annotations = {
       "cert-manager.io/cluster-issuer"      = "cloudflare-letsencrypt-${var.environment}"
       "ingress.cilium.io/loadbalancer-mode" = "shared"

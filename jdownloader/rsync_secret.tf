@@ -1,7 +1,7 @@
 resource "kubernetes_secret_v1" "rsync_secret" {
   metadata {
     name      = "rsync"
-    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
+    namespace = kubernetes_namespace_v1.jd-sftp.metadata[0].name
   }
 
   data = {

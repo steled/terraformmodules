@@ -4,7 +4,7 @@ apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: generic-cluster-pool
-  namespace: ${kubernetes_namespace.metallb.metadata[0].name}
+  namespace: ${kubernetes_namespace_v1.metallb.metadata[0].name}
 spec:
   addresses:
     ${var.helm_values_addresses}

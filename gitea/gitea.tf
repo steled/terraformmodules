@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "gitea" {
+resource "kubernetes_namespace_v1" "gitea" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -25,5 +25,5 @@ resource "helm_release" "gitea" {
     gitea_server_lfs_jwt_secret   = var.gitea_server_lfs_jwt_secret
   })]
 
-  namespace = kubernetes_namespace.gitea.metadata[0].name
+  namespace = kubernetes_namespace_v1.gitea.metadata[0].name
 }

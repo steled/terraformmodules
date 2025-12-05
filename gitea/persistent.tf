@@ -1,4 +1,4 @@
-resource "kubernetes_persistent_volume" "gitea-server-pv" {
+resource "kubernetes_persistent_volume_v1" "gitea-server-pv" {
   metadata {
     name = "gitea-server-pv"
     #    annotations = {
@@ -21,7 +21,7 @@ resource "kubernetes_persistent_volume" "gitea-server-pv" {
     }
   }
 
-  depends_on = [kubernetes_namespace.gitea, ]
+  depends_on = [kubernetes_namespace_v1.gitea, ]
 }
 
 resource "kubernetes_persistent_volume_claim" "gitea-server-pvc" {
@@ -37,13 +37,13 @@ resource "kubernetes_persistent_volume_claim" "gitea-server-pvc" {
         storage = "5Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-server-pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.gitea-server-pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.gitea-server-pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.gitea-server-pv, ]
 }
 
-resource "kubernetes_persistent_volume" "gitea-postgresql-pv" {
+resource "kubernetes_persistent_volume_v1" "gitea-postgresql-pv" {
   metadata {
     name = "gitea-postgresql-pv"
     #    annotations = {
@@ -66,10 +66,10 @@ resource "kubernetes_persistent_volume" "gitea-postgresql-pv" {
     }
   }
 
-  depends_on = [kubernetes_namespace.gitea, ]
+  depends_on = [kubernetes_namespace_v1.gitea, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "gitea-postgresql-pvc" {
+resource "kubernetes_persistent_volume_claim_v1" "gitea-postgresql-pvc" {
   metadata {
     name      = "gitea-postgresql-pvc"
     namespace = var.kubernetes_namespace_name
@@ -82,13 +82,13 @@ resource "kubernetes_persistent_volume_claim" "gitea-postgresql-pvc" {
         storage = "5Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-postgresql-pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.gitea-postgresql-pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.gitea-postgresql-pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.gitea-postgresql-pv, ]
 }
 
-resource "kubernetes_persistent_volume" "gitea-backup-pv" {
+resource "kubernetes_persistent_volume_v1" "gitea-backup-pv" {
   metadata {
     name = "gitea-backup-pv"
     #    annotations = {
@@ -111,10 +111,10 @@ resource "kubernetes_persistent_volume" "gitea-backup-pv" {
     }
   }
 
-  depends_on = [kubernetes_namespace.gitea, ]
+  depends_on = [kubernetes_namespace_v1.gitea, ]
 }
 
-resource "kubernetes_persistent_volume_claim" "gitea-backup-pvc" {
+resource "kubernetes_persistent_volume_claim_v1" "gitea-backup-pvc" {
   metadata {
     name      = "gitea-backup-pvc"
     namespace = var.kubernetes_namespace_name
@@ -127,8 +127,8 @@ resource "kubernetes_persistent_volume_claim" "gitea-backup-pvc" {
         storage = "1Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.gitea-backup-pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.gitea-backup-pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.gitea-backup-pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.gitea-backup-pv, ]
 }

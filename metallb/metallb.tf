@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "metallb" {
+resource "kubernetes_namespace_v1" "metallb" {
   metadata {
     name = var.namespace
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "metallb" {
 
 resource "helm_release" "metallb" {
   name      = "metallb"
-  namespace = kubernetes_namespace.metallb.metadata[0].name
+  namespace = kubernetes_namespace_v1.metallb.metadata[0].name
 
   repository    = "https://metallb.github.io/metallb"
   chart         = "metallb"
@@ -15,15 +15,16 @@ resource "helm_release" "metallb" {
 
   values = [file(var.values_yaml)]
 
-  set {
-    name  = "controller.image.tag"
-    value = var.metallb_version
-  }
+  set = [
+    {
+      name  = "controller.image.tag"
+      value = var.metallb_version
+    },
+    {
+      name  = "speaker.image.tag"
+      value = var.metallb_version
+    }
+  ]
 
-  set {
-    name  = "speaker.image.tag"
-    value = var.metallb_version
-  }
-
-  # depends_on    = [ kubernetes_namespace.metallb, ]
+  # depends_on    = [ kubernetes_namespace_v1.metallb, ]
 }

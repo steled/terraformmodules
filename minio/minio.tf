@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "minio" {
+resource "kubernetes_namespace_v1" "minio" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "minio" {
 
 resource "helm_release" "minio" {
   name      = "minio"
-  namespace = kubernetes_namespace.minio.metadata[0].name
+  namespace = kubernetes_namespace_v1.minio.metadata[0].name
 
   repository = "https://charts.min.io/"
   chart      = "minio"

@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "longhorn" {
+resource "kubernetes_namespace_v1" "longhorn" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "longhorn" {
 
 resource "helm_release" "longhorn" {
   name      = "longhorn"
-  namespace = kubernetes_namespace.longhorn.metadata[0].name
+  namespace = kubernetes_namespace_v1.longhorn.metadata[0].name
 
   repository = "https://charts.longhorn.io"
   chart      = "longhorn"

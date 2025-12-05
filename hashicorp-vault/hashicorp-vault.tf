@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "hashicorp_vault" {
+resource "kubernetes_namespace_v1" "hashicorp_vault" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -19,7 +19,7 @@ resource "kubernetes_namespace" "hashicorp_vault" {
 
 resource "helm_release" "hashicorp_vault" {
   name      = "vault"
-  namespace = kubernetes_namespace.hashicorp_vault.metadata[0].name
+  namespace = kubernetes_namespace_v1.hashicorp_vault.metadata[0].name
 
   repository = "https://helm.releases.hashicorp.com"
   chart      = "vault"
@@ -38,6 +38,6 @@ resource "helm_release" "hashicorp_vault" {
 
   depends_on = [
     # kubectl_manifest.cert_manager_certificate_steled_selfsigned_ca,
-    kubernetes_persistent_volume_claim.hashicorp_vault_data_pvc
+    kubernetes_persistent_volume_claim_v1.hashicorp_vault_data_pvc
   ]
 }

@@ -1,7 +1,7 @@
 resource "helm_release" "duckdns_webhook" {
   # name       = "cert-manager-webhook-duckdns"
   name      = "cert-manager-duckdns-webhook"
-  namespace = kubernetes_namespace.certmanager.metadata[0].name
+  namespace = kubernetes_namespace_v1.certmanager.metadata[0].name
 
   # repository = "https://steled.github.io/cert-manager-webhook-duckdns/"
   repository = "https://csp33.github.io/cert-manager-duckdns-webhook"

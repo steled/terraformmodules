@@ -1,7 +1,7 @@
 resource "kubernetes_cron_job_v1" "rsync_cronjob" {
   metadata {
     name      = "rsync"
-    namespace = kubernetes_namespace.jd-sftp.metadata[0].name
+    namespace = kubernetes_namespace_v1.jd-sftp.metadata[0].name
   }
   spec {
     concurrency_policy        = "Replace"
@@ -28,7 +28,7 @@ resource "kubernetes_cron_job_v1" "rsync_cronjob" {
               name              = "rsync"
               volume_mount {
                 # mount_path = "/ext/persistent/jdownloader/downloads"
-                mount_path = kubernetes_persistent_volume.jd-sftp-downloads-pv.spec[0].persistent_volume_source[0].host_path[0].path
+                mount_path = kubernetes_persistent_volume_v1.jd-sftp-downloads-pv.spec[0].persistent_volume_source[0].host_path[0].path
                 name       = "downloads-lailaps"
               }
               volume_mount {
@@ -39,7 +39,7 @@ resource "kubernetes_cron_job_v1" "rsync_cronjob" {
             volume {
               name = "downloads-lailaps"
               persistent_volume_claim {
-                claim_name = kubernetes_persistent_volume_claim.jd-sftp-downloads-pvc.metadata[0].name
+                claim_name = kubernetes_persistent_volume_claim_v1.jd-sftp-downloads-pvc.metadata[0].name
               }
             }
             volume {

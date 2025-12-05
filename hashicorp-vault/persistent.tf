@@ -1,4 +1,4 @@
-resource "kubernetes_persistent_volume" "hashicorp_vault_data_pv" {
+resource "kubernetes_persistent_volume_v1" "hashicorp_vault_data_pv" {
   metadata {
     name = "data-vault-0"
     labels = {
@@ -19,10 +19,10 @@ resource "kubernetes_persistent_volume" "hashicorp_vault_data_pv" {
   }
 }
 
-resource "kubernetes_persistent_volume_claim" "hashicorp_vault_data_pvc" {
+resource "kubernetes_persistent_volume_claim_v1" "hashicorp_vault_data_pvc" {
   metadata {
-    name      = kubernetes_persistent_volume.hashicorp_vault_data_pv.metadata[0].name
-    namespace = kubernetes_namespace.hashicorp_vault.metadata[0].name
+    name      = kubernetes_persistent_volume_v1.hashicorp_vault_data_pv.metadata[0].name
+    namespace = kubernetes_namespace_v1.hashicorp_vault.metadata[0].name
   }
   spec {
     storage_class_name = "manual"
@@ -32,8 +32,8 @@ resource "kubernetes_persistent_volume_claim" "hashicorp_vault_data_pvc" {
         storage = "10Gi"
       }
     }
-    volume_name = kubernetes_persistent_volume.hashicorp_vault_data_pv.metadata[0].name
+    volume_name = kubernetes_persistent_volume_v1.hashicorp_vault_data_pv.metadata[0].name
   }
 
-  depends_on = [kubernetes_persistent_volume.hashicorp_vault_data_pv, ]
+  depends_on = [kubernetes_persistent_volume_v1.hashicorp_vault_data_pv, ]
 }

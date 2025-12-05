@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "nextcloud" {
+resource "kubernetes_namespace_v1" "nextcloud" {
   metadata {
     name = var.kubernetes_namespace_name
   }
@@ -69,16 +69,16 @@ resource "helm_release" "nextcloud" {
     postgresql_database = var.postgresql_database
   })]
 
-  namespace = kubernetes_namespace.nextcloud.metadata[0].name
+  namespace = kubernetes_namespace_v1.nextcloud.metadata[0].name
 
   timeout = 360
 
   depends_on = [
-    kubernetes_persistent_volume_claim.nextcloud_server_pvc,
-    kubernetes_persistent_volume_claim.nextcloud_postgresql_pvc,
-    kubernetes_persistent_volume_claim.nextcloud_backup_pvc,
-    kubernetes_persistent_volume_claim.nextcloud_redis_master_pvc,
-    kubernetes_persistent_volume_claim.nextcloud_redis_replica_pvc,
-    kubernetes_secret.nextcloud_secret
+    kubernetes_persistent_volume_claim_v1.nextcloud_server_pvc,
+    kubernetes_persistent_volume_claim_v1.nextcloud_postgresql_pvc,
+    kubernetes_persistent_volume_claim_v1.nextcloud_backup_pvc,
+    kubernetes_persistent_volume_claim_v1.nextcloud_redis_master_pvc,
+    kubernetes_persistent_volume_claim_v1.nextcloud_redis_replica_pvc,
+    kubernetes_secret_v1.nextcloud_secret
   ]
 }

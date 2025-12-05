@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "ingress" {
+resource "kubernetes_namespace_v1" "ingress" {
   metadata {
     name = var.namespace
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "ingress" {
 
 resource "helm_release" "ingress" {
   name      = "ingress-nginx"
-  namespace = kubernetes_namespace.ingress.metadata[0].name
+  namespace = kubernetes_namespace_v1.ingress.metadata[0].name
 
   repository    = "https://kubernetes.github.io/ingress-nginx"
   chart         = "ingress-nginx"

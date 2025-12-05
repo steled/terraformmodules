@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "certmanager" {
+resource "kubernetes_namespace_v1" "certmanager" {
   metadata {
     name = var.namespace
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "certmanager" {
 
 resource "helm_release" "certmanager" {
   name      = "cert-manager"
-  namespace = kubernetes_namespace.certmanager.metadata[0].name
+  namespace = kubernetes_namespace_v1.certmanager.metadata[0].name
 
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
@@ -44,5 +44,5 @@ resource "helm_release" "certmanager" {
     command = "kubectl delete crd certificaterequests.cert-manager.io certificates.cert-manager.io challenges.acme.cert-manager.io clusterissuers.cert-manager.io issuers.cert-manager.io orders.acme.cert-manager.io"
   }
 
-  depends_on = [kubernetes_secret.cloudflare_api_token_secret]
+  depends_on = [kubernetes_secret_v1.cloudflare_api_token_secret]
 }
