@@ -37,7 +37,7 @@ resource "helm_release" "hashicorp_vault" {
   }
 
   depends_on = [
-    # kubectl_manifest.cert_manager_certificate_steled_selfsigned_ca,
+    # kubernetes_manifest.cert_manager_certificate_steled_selfsigned_ca,
     kubernetes_persistent_volume_claim_v1.hashicorp_vault_data_pvc
   ]
 }
