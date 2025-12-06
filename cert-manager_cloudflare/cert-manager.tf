@@ -13,31 +13,8 @@ resource "helm_release" "certmanager" {
   version    = var.cert_manager_version # check version here: https://artifacthub.io/packages/helm/cert-manager/cert-manager/
 
   values = [
-    file("${path.module}/values.yaml")
+    file(var.cert_manager_values_yaml)
   ]
-
-  # set = [
-  #   {
-  #     name  = "crds.enabled"
-  #     value = "true"
-  #   },
-  #   {
-  #     name  = "crds.keep"
-  #     value = "false"
-  #   },
-  #   {
-  #     name  = "config.apiVersion"
-  #     value = "controller.config.cert-manager.io/v1alpha1"
-  #   },
-  #   {
-  #     name  = "config.kind"
-  #     value = "ControllerConfiguration"
-  #   },
-  #   {
-  #     name  = "config.enableGatewayAPI"
-  #     value = "true"
-  #   }
-  # ]
 
   provisioner "local-exec" {
     when    = destroy
