@@ -2,6 +2,12 @@ variable "kubernetes_namespace_name" {
   type = string
 }
 
+variable "kubernetes_namespace_labels" {
+  description = "Additional labels for the namespace"
+  type        = map(string)
+  default     = {}
+}
+
 variable "environment" {
   type = string
 }

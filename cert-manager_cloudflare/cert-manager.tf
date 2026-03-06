@@ -1,6 +1,8 @@
 resource "kubernetes_namespace_v1" "certmanager" {
   metadata {
-    name = var.namespace
+    annotations = var.namespace_annotations
+    labels      = var.namespace_labels
+    name        = var.namespace
   }
 }
 

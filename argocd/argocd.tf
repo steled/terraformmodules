@@ -1,10 +1,7 @@
 resource "kubernetes_namespace_v1" "argocd" {
   metadata {
-    labels = {
-      shared-gateway-access = "true"
-    }
-
-    name = var.kubernetes_namespace_name
+    labels = var.kubernetes_namespace_labels
+    name   = var.kubernetes_namespace_name
   }
 }
 

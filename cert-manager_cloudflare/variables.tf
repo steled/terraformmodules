@@ -20,3 +20,15 @@ variable "namespace" {
   type        = string
   description = "Name of the kubernetes namespace"
 }
+
+variable "namespace_annotations" {
+  description = "Additional annotations for the namespace"
+  type        = map(string)
+  default     = {}
+}
+
+variable "namespace_labels" {
+  description = "Additional labels for the namespace"
+  type        = map(string)
+  default     = {}
+}
