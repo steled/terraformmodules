@@ -40,6 +40,8 @@ No modules.
 | <a name="input_cert_manager_version"></a> [cert\_manager\_version](#input\_cert\_manager\_version) | Set the version of cert-manager | `string` | n/a | yes |
 | <a name="input_cloudflare_api_token"></a> [cloudflare\_api\_token](#input\_cloudflare\_api\_token) | n/a | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Name of the kubernetes namespace | `string` | n/a | yes |
+| <a name="input_namespace_annotations"></a> [namespace\_annotations](#input\_namespace\_annotations) | Additional annotations for the namespace | `map(string)` | `{}` | no |
+| <a name="input_namespace_labels"></a> [namespace\_labels](#input\_namespace\_labels) | Additional labels for the namespace | `map(string)` | `{}` | no |
 
 ## Outputs
 

@@ -38,6 +38,7 @@ No modules.
 | <a name="input_argocd_version"></a> [argocd\_version](#input\_argocd\_version) | n/a | `string` | n/a | yes |
 | <a name="input_domain"></a> [domain](#input\_domain) | n/a | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | n/a | `string` | n/a | yes |
+| <a name="input_kubernetes_namespace_labels"></a> [kubernetes\_namespace\_labels](#input\_kubernetes\_namespace\_labels) | Additional labels for the namespace | `map(string)` | `{}` | no |
 | <a name="input_kubernetes_namespace_name"></a> [kubernetes\_namespace\_name](#input\_kubernetes\_namespace\_name) | n/a | `string` | n/a | yes |
 | <a name="input_telegram_bot_token"></a> [telegram\_bot\_token](#input\_telegram\_bot\_token) | n/a | `string` | n/a | yes |
 
