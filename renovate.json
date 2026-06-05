@@ -7,5 +7,18 @@
   "enabledManagers": [
     "github-actions",
     "terraform"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "terraform"
+      ],
+      "matchDatasources": [
+        "terraform-provider"
+      ],
+      "registryUrls": [
+        "https://registry.opentofu.org"
+      ]
+    }
   ]
 }
