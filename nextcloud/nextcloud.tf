@@ -53,7 +53,7 @@ resource "helm_release" "nextcloud" {
   version       = var.nextcloud_version # take care of update path; check version here: https://github.com/nextcloud/helm/blob/master/charts/nextcloud/Chart.yaml
   recreate_pods = true
 
-  values = [templatefile(var.values_yaml, {
+  values = [sensitive(templatefile(var.values_yaml, {
     nextcloud_domain    = var.nextcloud_domain,
     environment         = var.environment,
     ip_address          = var.ip_address,
@@ -67,7 +67,7 @@ resource "helm_release" "nextcloud" {
     smtp_password       = var.smtp_password,
     postgresql_username = var.postgresql_username,
     postgresql_database = var.postgresql_database
-  })]
+  }))]
 
   namespace = kubernetes_namespace_v1.nextcloud.metadata[0].name
 
