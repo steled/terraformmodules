@@ -13,13 +13,13 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
   version    = var.argocd_version
 
-  values = [templatefile(var.argocd_values_yaml, {
+  values = [sensitive(templatefile(var.argocd_values_yaml, {
     environment              = var.environment
     domain                   = var.domain
     telegram_bot_token       = var.telegram_bot_token
     accounts_steled_password = var.accounts_steled_password
     apps_sshPrivateKey       = var.apps_sshPrivateKey
-  })]
+  }))]
 
   provisioner "local-exec" {
     when    = destroy
@@ -35,7 +35,7 @@ resource "helm_release" "argocd-apps" {
   chart      = "argocd-apps"
   version    = var.argocd_apps_version
 
-  values = [file(var.argocd_apps_values_yaml)]
+  values = [sensitive(file(var.argocd_apps_values_yaml))]
 
   depends_on = [helm_release.argocd]
 }
