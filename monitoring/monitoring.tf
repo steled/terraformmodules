@@ -13,12 +13,11 @@ resource "helm_release" "monitoring" {
   #  force_update  = true
   #  recreate_pods = true
 
-  #  values = [ file("values.yaml") ]
-  values = [templatefile("values.yaml", {
+  values = [sensitive(templatefile(var.values_yaml, {
     grafana_admin_password = var.grafana_admin_password,
     grafana_environment    = var.grafana_environment,
     grafana_domain         = var.grafana_domain
-  })]
+  }))]
 
   namespace = kubernetes_namespace_v1.monitoring.metadata[0].name
 }
