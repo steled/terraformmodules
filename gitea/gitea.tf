@@ -13,7 +13,7 @@ resource "helm_release" "gitea" {
   #  force_update  = true
   #  recreate_pods = true
 
-  values = [templatefile(var.values_yaml, {
+  values = [sensitive(templatefile(var.values_yaml, {
     gitea_domain                  = var.gitea_domain
     environment                   = var.environment
     gitea_admin_username          = var.gitea_admin_username
@@ -23,7 +23,7 @@ resource "helm_release" "gitea" {
     gitea_security_internal_token = var.gitea_security_internal_token
     gitea_security_secret_key     = var.gitea_security_secret_key
     gitea_server_lfs_jwt_secret   = var.gitea_server_lfs_jwt_secret
-  })]
+  }))]
 
   namespace = kubernetes_namespace_v1.gitea.metadata[0].name
 }
