@@ -12,7 +12,7 @@ resource "helm_release" "victoriametrics" {
   chart      = "victoria-metrics-k8s-stack"
   version    = var.victoriametrics_version
 
-  values = [templatefile(var.values_yaml, {
+  values = [sensitive(templatefile(var.values_yaml, {
     environment           = var.environment
     vmsingle_domains      = var.vmsingle_domains
     alertmanager_domains  = var.alertmanager_domains
@@ -26,5 +26,5 @@ resource "helm_release" "victoriametrics" {
     notify_domain         = var.notify_domain
     apprise_config_id     = var.apprise_config_id
     authentik_url         = var.authentik_url
-  })]
+  }))]
 }
