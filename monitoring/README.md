@@ -34,6 +34,7 @@ No modules.
 | <a name="input_grafana_environment"></a> [grafana\_environment](#input\_grafana\_environment) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_namespace_name"></a> [kubernetes\_namespace\_name](#input\_kubernetes\_namespace\_name) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_version"></a> [monitoring\_version](#input\_monitoring\_version) | Set the version of monitoring stack | `string` | n/a | yes |
+| <a name="input_values_yaml"></a> [values\_yaml](#input\_values\_yaml) | Path to the values.yml file, relative to the root module | `string` | n/a | yes |
 
 ## Outputs
 
