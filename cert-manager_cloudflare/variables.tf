@@ -8,10 +8,6 @@ variable "cert_manager_values_yaml" {
   description = "Path to the cert-manager values.yml file, relative to the root module"
 }
 
-variable "cloudflare_api_token" {
-  type = string
-}
-
 variable "cert_manager_email" {
   type = string
 }

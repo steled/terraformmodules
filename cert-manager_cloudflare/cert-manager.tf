@@ -22,6 +22,4 @@ resource "helm_release" "certmanager" {
     when    = destroy
     command = "kubectl delete crd certificaterequests.cert-manager.io certificates.cert-manager.io challenges.acme.cert-manager.io clusterissuers.cert-manager.io issuers.cert-manager.io orders.acme.cert-manager.io"
   }
-
-  depends_on = [kubernetes_secret_v1.cloudflare_api_token_secret]
 }

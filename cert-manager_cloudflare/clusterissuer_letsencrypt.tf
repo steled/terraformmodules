@@ -19,7 +19,6 @@
 # YAML
 
 #   depends_on = [
-#     kubernetes_secret_v1.cloudflare_api_token_secret,
 #     helm_release.certmanager
 #   ]
 # }
@@ -55,7 +54,6 @@ resource "kubernetes_manifest" "cert_manager_cluster_issuer_letsencrypt_staging"
   }
 
   depends_on = [
-    kubernetes_secret_v1.cloudflare_api_token_secret,
     helm_release.certmanager
   ]
 }
@@ -81,7 +79,6 @@ resource "kubernetes_manifest" "cert_manager_cluster_issuer_letsencrypt_staging"
 # YAML
 
 #   depends_on = [
-#     kubernetes_secret_v1.cloudflare_api_token_secret,
 #     helm_release.certmanager
 #   ]
 # }
@@ -117,7 +114,6 @@ resource "kubernetes_manifest" "cert_manager_cluster_issuer_letsencrypt_producti
   }
 
   depends_on = [
-    kubernetes_secret_v1.cloudflare_api_token_secret,
     helm_release.certmanager
   ]
 }
